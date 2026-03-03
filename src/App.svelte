@@ -8,7 +8,7 @@
       name: 'Ward Program',
       link: null,
       visibility: "Yes — your data is never made public. It's only accessible via your private URL and custom QR code.",
-      cost: '$3 per month',
+      cost: '$3 per month for your entire ward',
       qrCode: 'Yes',
       appDownload: 'No — easily added to home screen',
       convenience: '★★★★★',
@@ -69,27 +69,28 @@
     </header>
     <section class="mb-12 mt-6 rounded-3xl border border-slate-200 bg-white/80 px-4 py-12 text-center backdrop-blur-sm md:mb-16 md:px-8 md:py-16 lg:mb-20 lg:px-8 lg:py-20">
       <div class="mb-4 flex items-center justify-center gap-3">
-        <img src={logo} alt="Ward Program" class="block h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12" />
+        <img src={logo} alt="Ward Program logo — private sacrament meeting program manager" class="block h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12" />
         <span class="text-2xl font-normal tracking-[0.05em] text-slate-900 md:text-[1.75rem] lg:text-[2rem]">Ward Program</span>
       </div>
       <h1 class="mb-4 text-[2.5rem] leading-[1.2] font-light tracking-[0.05em] text-slate-900 md:text-[4rem] lg:text-[5rem]">plain like paper</h1>
-      <p class="m-0 text-lg font-normal text-slate-600 md:text-xl lg:text-2xl">No need to be complicated.</p>
+      <p class="m-0 text-base font-normal text-slate-600 md:text-lg lg:text-xl">A private, simple sacrament meeting program for your ward.</p>
+      <p class="m-0 mt-2 text-lg font-normal text-slate-500 md:text-xl lg:text-2xl">No need to be complicated.</p>
     </section>
 
     <section class="mb-12 grid grid-cols-1 gap-12 md:mb-16 md:grid-cols-3 md:gap-10 lg:gap-12">
       <FeatureCard
-        title="Edit your weekly program"
-        body="Create and manage your church congregation's weekly program. It's simple, straightforward, and easy to use."
+        title="Edit your weekly sacrament meeting program"
+        body="Create and manage your LDS ward's weekly program in minutes. Simple, straightforward, and designed specifically for sacrament meeting programs."
       />
 
       <FeatureCard
-        title="Private and secure"
-        body="Your congregation information stays private. We don't make your details public or searchable by anyone."
+        title="Private and secure — your data stays hidden"
+        body="Unlike WardBullet and Ward Bulletin App, your congregation information is never made public or searchable. No one can look up your ward's details."
       />
 
       <FeatureCard
-        title="QR code for your church"
-        body="Generate a QR code to display in your church. Members can scan it to access the program on their phones."
+        title="QR code for your church building"
+        body="Generate a custom QR code to display in your church building. Members scan it to access the program on their phones — no app download needed."
       />
     </section>
 
@@ -191,9 +192,70 @@
       </div>
     </section>
 
+    <section class="mb-12 md:mb-16">
+      <div class="mb-8 text-center">
+        <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">How It Works</h2>
+        <p class="m-0 text-base text-slate-600 md:text-lg">Get your ward's digital sacrament meeting program up and running in minutes.</p>
+      </div>
+      <div class="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+        <div class="text-center">
+          <div class="mb-3 text-3xl">1</div>
+          <h3 class="mb-2 text-lg font-medium text-slate-900">Create your program</h3>
+          <p class="m-0 text-sm text-slate-600">Log in to the editor and add your sacrament meeting details — speakers, hymns, announcements, and more.</p>
+        </div>
+        <div class="text-center">
+          <div class="mb-3 text-3xl">2</div>
+          <h3 class="mb-2 text-lg font-medium text-slate-900">Share with your ward</h3>
+          <p class="m-0 text-sm text-slate-600">Print the generated QR code and display it in your church building, or share the private link directly.</p>
+        </div>
+        <div class="text-center">
+          <div class="mb-3 text-3xl">3</div>
+          <h3 class="mb-2 text-lg font-medium text-slate-900">Members view on their phones</h3>
+          <p class="m-0 text-sm text-slate-600">Members scan the QR code — no app download needed. They can save it to their home screen for instant access each week.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12 md:mb-16">
+      <div class="mb-8 text-center">
+        <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">Frequently Asked Questions</h2>
+        <p class="m-0 text-base text-slate-600 md:text-lg">Everything you need to know about Ward Program.</p>
+      </div>
+      <div class="mx-auto max-w-3xl space-y-6">
+        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6" open>
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">What is Ward Program?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple digital program that members access via QR code or a private link — with none of your congregation data ever made public.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">How is Ward Program different from WardBullet or Ward Bulletin App?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">The key difference is <strong>privacy</strong>. Both WardBullet and Ward Bulletin App publish ward information in searchable public directories — meaning anyone can look up your congregation and find details about members, speakers, and meetings. Ward Program never makes your data public. Your program is only accessible through a private URL and your custom QR code. Additionally, Ward Program requires no app download — it works directly in any mobile browser.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">How much does Ward Program cost?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">Ward Program costs <strong>$3 per month</strong> for your entire ward. This includes unlimited program editing, QR code generation, and private sharing for your entire ward. There are no hidden fees, no per-member charges, and no upsells.</p>
+        </details>
+          <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">Can I sponsor this for my ward?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">Yes! You can sponsor Ward Program for your entire ward, covering the $3 per month cost. This ensures all members have access to the program without any individual charges.  The best way to do this is create an email address for your ward and sign up using that.  Then give access to that emaill address to the brother or sister in charge of managing program.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">Do members need to download an app?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">No. Members simply scan the QR code displayed in your church building (or tap a shared link) to view the program in their phone's browser. They can also add it to their home screen for instant access each Sunday — no app store download required.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">Is my ward's information private and secure?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">Yes. Ward Program never publishes your ward's data in any public directory. Your weekly program is only accessible via your private URL and custom QR code. No one outside your congregation can search for or discover your ward's information. This is the core reason Ward Program exists — to give wards a safe, private alternative to publicly-searchable bulletin tools.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">How do I get started?</summary>
+          <p class="mt-3 text-base leading-relaxed text-slate-600">Getting started takes just a few minutes. Visit the <a href="https://app.wardprogram.com/login" class="text-indigo-600 underline underline-offset-2 hover:text-indigo-800">admin login</a> to create your account, then use the editor to build your first program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-indigo-600 underline underline-offset-2 hover:text-indigo-800">try the editor demo</a> to see how it works before signing up.</p>
+        </details>
+      </div>
+    </section>
+
     <footer class="text-center text-slate-600">
       <p>This website is maintained by Ward Program. All rights reserved. &copy; {new Date().getFullYear()}</p>
-      <p>Not an official church website.</p>
+      <p>Not an official website of <span class="italic">The Church of Jesus Christ of Latter-day Saints</span>.</p>
     </footer>
   </main>
 </div>

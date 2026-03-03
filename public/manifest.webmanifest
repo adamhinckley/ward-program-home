@@ -1,0 +1,19 @@
+{
+  "name": "Ward Program — Private Sacrament Meeting Programs",
+  "short_name": "Ward Program",
+  "description": "Create and share your ward's weekly sacrament meeting program privately. QR code sharing, easy editing, and privacy-first design for LDS congregations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#f8fafc",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/book-open-svgrepo-com.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

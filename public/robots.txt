@@ -1,0 +1,5 @@
+# Ward Program — https://wardprogram.com
+User-agent: *
+Allow: /
+
+Sitemap: https://wardprogram.com/sitemap.xml
