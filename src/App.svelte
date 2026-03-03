@@ -1,275 +1,155 @@
 <script>
   import logo from './assets/book-open-svgrepo-com.svg';
+  import OutlineButton from './lib/OutlineButton.svelte';
+  import FeatureCard from './lib/FeatureCard.svelte';
+
+  const comparisonRows = [
+    {
+      name: 'Ward Program',
+      link: null,
+      visibility: "Yes — your data is never made public. It's only accessible via your private URL and custom QR code.",
+      cost: '$3 per month',
+      qrCode: 'Yes',
+      appDownload: 'No — easily added to home screen',
+      convenience: '★★★★★',
+      notes: 'Private and not searchable. Clean interface and easy to use.',
+      featured: true
+    },
+    {
+      name: 'WardBullet',
+      link: 'https://www.wardbullet.com/',
+      visibility: 'No — anyone can look up your ward and find private information.',
+      cost: 'Free',
+      qrCode: 'Yes',
+      appDownload: 'Yes',
+      convenience: '★★★★',
+      notes: 'Simple and free, but searchable data can lead to doxing.',
+      featured: false
+    },
+    {
+      name: 'Ward Bulletin App',
+      link: 'https://wardbulletin.app/home',
+      visibility: 'No — anyone can look up your ward and find private information.',
+      cost: 'Free',
+      qrCode: 'Not built in (managed separately)',
+      appDownload: 'No',
+      convenience: '★★★',
+      notes: 'Good solution overall, but searchable ward data can lead to doxing.',
+      featured: false
+    },
+    {
+      name: 'Canva',
+      link: null,
+      visibility: 'No public lookup (shared links or exported PDF access only).',
+      cost: 'Free or $15/month for Pro',
+      qrCode: 'Not built in (managed separately)',
+      appDownload: 'No',
+      convenience: '★★★',
+      notes: 'Excellent templates, but setup and sharing management take more effort.  Lacks options without a pro subscription.',
+      featured: false
+    },
+    {
+      name: 'Google Docs',
+      link: null,
+      visibility: 'No public lookup (you manage shared links).',
+      cost: 'Free',
+      qrCode: 'Not built in (managed separately)',
+      appDownload: 'No',
+      convenience: '★★★',
+      notes: 'Works well for documents, but more manual than purpose-built tools.',
+      featured: false
+    }
+  ];
 </script>
 
-<main>
-  <header class=''>
-    <a href='https://app.wardprogram.com/login' class="button button-outline">Admin Login</a>
-  </header>
-  <section class="hero">
-    <div class="logo-container">
-      <img src={logo} alt="Ward Program" class="logo" />
-      <span class="product-name">Ward Program</span>
-    </div>
-    <h1>plain like paper</h1>
-    <p class="tagline">No need to be complicated.</p>
-  </section>
+<div class="min-h-screen bg-linear-to-b from-slate-50 via-white to-slate-100">
+  <main class="flex min-h-screen w-full max-w-full flex-col px-4 py-8 text-slate-900 md:px-8 md:py-12 lg:mx-auto lg:max-w-300 lg:px-12 lg:py-16">
+    <header class="flex justify-end">
+      <OutlineButton href="https://app.wardprogram.com/login" text="Admin Login" />
+    </header>
+    <section class="mb-12 mt-6 rounded-3xl border border-slate-200 bg-white/80 px-4 py-12 text-center backdrop-blur-sm md:mb-16 md:px-8 md:py-16 lg:mb-20 lg:px-8 lg:py-20">
+      <div class="mb-4 flex items-center justify-center gap-3">
+        <img src={logo} alt="Ward Program" class="block h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12" />
+        <span class="text-2xl font-normal tracking-[0.05em] text-slate-900 md:text-[1.75rem] lg:text-[2rem]">Ward Program</span>
+      </div>
+      <h1 class="mb-4 text-[2.5rem] leading-[1.2] font-light tracking-[0.05em] text-slate-900 md:text-[4rem] lg:text-[5rem]">plain like paper</h1>
+      <p class="m-0 text-lg font-normal text-slate-600 md:text-xl lg:text-2xl">No need to be complicated.</p>
+    </section>
 
-  <section class="content">
-    <div class="feature">
-      <h2>Edit your weekly program</h2>
-      <p>Create and manage your church congregation's weekly program. It's simple, straightforward, and easy to use.</p>
-    </div>
+    <section class="mb-12 grid grid-cols-1 gap-12 md:mb-16 md:grid-cols-3 md:gap-10 lg:gap-12">
+      <FeatureCard
+        title="Edit your weekly program"
+        body="Create and manage your church congregation's weekly program. It's simple, straightforward, and easy to use."
+      />
 
-    <div class="feature">
-      <h2>Private and secure</h2>
-      <p>Your congregation information stays private. We don't make your details public or searchable by anyone.</p>
-    </div>
+      <FeatureCard
+        title="Private and secure"
+        body="Your congregation information stays private. We don't make your details public or searchable by anyone."
+      />
 
-    <div class="feature">
-      <h2>QR code for your church</h2>
-      <p>Generate a QR code to display in your church. Members can scan it to access the program on their phones.</p>
-    </div>
-  </section>
+      <FeatureCard
+        title="QR code for your church"
+        body="Generate a QR code to display in your church. Members can scan it to access the program on their phones."
+      />
+    </section>
 
-  <section class="cta">
-    <div class="demo-buttons">
-      <a href="https://app.wardprogram.com/demo/program"  rel="noopener noreferrer" class="button button-outline">View Program Demo</a>
-      <a href="https://app.wardprogram.com/demo/editor"  rel="noopener noreferrer" class="button button-outline">View Editor Demo</a>
-    </div>
-  </section>
+    <section class="mb-12 md:mb-16 ">
+      <div class="mb-6 text-center">
+        <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">Compare Your Options</h2>
+        <p class="m-0 text-base text-slate-600 md:text-lg">A side-by-side look at privacy, convenience, and cost.</p>
+      </div>
 
-  <footer>
-    <p>We are not taking new signups at this time in order to keep it free for the congregations that do use it.  If you know someone using this, find out how they got access and ask for help.</p>
-  </footer>
-</main>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <table class="w-full min-w-262.5 border-collapse text-left">
+          <thead>
+            <tr class="border-b border-slate-200 bg-slate-50 text-sm tracking-[0.03em] text-slate-700 md:text-base">
+              <th class="px-4 py-3 font-normal">Solution</th>
+              <th class="px-4 py-3 font-normal">Is it private?</th>
+              <th class="px-4 py-3 font-normal">Cost</th>
+              <th class="px-4 py-3 font-normal">QR Code</th>
+              <th class="px-4 py-3 font-normal">Requires App Download</th>
+              <th class="px-4 py-3 font-normal">Convenience</th>
+              <th class="px-4 py-3 font-normal">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each comparisonRows as row}
+              <tr class={`border-b border-slate-200 align-top ${row.featured ? 'bg-indigo-50/70' : 'bg-white'}`}>
+                <td class="px-4 py-4 text-sm md:text-base">
+                  <div class="flex items-center gap-2">
+                    {#if row.link}
+                      <a href={row.link} rel="noopener noreferrer" class="text-slate-800 underline decoration-slate-400 underline-offset-2 transition-colors hover:text-indigo-700">{row.name}</a>
+                    {:else}
+                      <span class={row.featured ? 'font-semibold tracking-[0.02em] text-indigo-800' : 'text-slate-900'}>{row.name}</span>
+                    {/if}
+                    {#if row.featured}
+                      <span class="rounded-full text-center border border-indigo-200 bg-indigo-100 px-2 py-0.5 text-xs tracking-[0.04em] text-indigo-700">Best for privacy</span>
+                    {/if}
+                  </div>
+                </td>
+                <td class="px-4 py-4 text-sm leading-normal text-slate-700 md:text-base">{row.visibility}</td>
+                <td class="px-4 py-4 text-sm text-slate-700 md:text-base">{row.cost}</td>
+                <td class="px-4 py-4 text-sm text-slate-700 md:text-base">{row.qrCode}</td>
+                <td class="px-4 py-4 text-sm leading-normal text-slate-700 md:text-base">{row.appDownload}</td>
+                <td class="px-4 py-4 text-sm text-amber-600 md:text-base">{row.convenience}</td>
+                <td class="px-4 py-4 text-sm leading-normal text-slate-700 md:text-base">{row.notes}</td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-<style>
-  header {
-    display: flex;
-    justify-content: flex-end;
-  }
-  main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 1rem;
-    max-width: 100%;
-  }
+    <section class="px-4 py-8 text-center">
+      <div class="mb-8 flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-6">
+        <OutlineButton href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" text="View Program Demo" />
+        <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="View Editor Demo" />
+      </div>
+    </section>
 
-  .hero {
-    text-align: center;
-    padding: 3rem 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .logo {
-    width: 2rem;
-    height: 2rem;
-    display: block;
-  }
-
-  .product-name {
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    margin: 0 0 1rem 0;
-    line-height: 1.2;
-  }
-
-  .tagline {
-    font-size: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    opacity: 0.8;
-  }
-
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .feature {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    border: 1px solid #000;
-  }
-
-  .feature h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin: 0 0 1rem 0;
-    letter-spacing: 0.02em;
-  }
-
-  .feature p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cta {
-    text-align: center;
-    padding: 2rem 1rem;
-  }
-
-  .demo-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    align-items: center;
-  }
-
-  .button {
-    display: inline-block;
-    padding: 0.875rem 2rem;
-    border: 2px solid #000;
-    background-color: #000;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    cursor: pointer;
-  }
-
-  .button-outline {
-    background-color: #fff;
-    color: #000;
-  }
-
-  .button-outline:hover {
-    background-color: #f5f5f5;
-    color: #000;
-  }
-
-  .button:hover {
-    background-color: #333;
-    color: #fff;
-  }
-
-  footer {
-    text-align: center;
-  }
-
-  /* Tablet and up */
-  @media (min-width: 768px) {
-    main {
-      padding: 3rem 2rem; 
-    }
-
-    header {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .hero {
-      padding: 4rem 2rem;
-      margin-bottom: 4rem;
-    }
-
-    h1 {
-      font-size: 4rem;
-    }
-
-    .tagline {
-      font-size: 1.25rem;
-    }
-
-    .logo {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-
-    .product-name {
-      font-size: 1.75rem;
-    }
-
-    .content {
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    .feature h2 {
-      font-size: 1.75rem;
-    }
-
-    .feature p {
-      font-size: 1.125rem;
-    }
-
-    .demo-buttons {
-      flex-direction: row;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-  }
-
-  /* Desktop */
-  @media (min-width: 1024px) {
-    
-    main {
-      padding: 4rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .hero {
-      padding: 5rem 2rem;
-      margin-bottom: 5rem;
-    }
-
-    h1 {
-      font-size: 5rem;
-    }
-
-    .tagline {
-      font-size: 1.5rem;
-    }
-
-    .logo {
-      width: 3rem;
-      height: 3rem;
-    }
-
-    .product-name {
-      font-size: 2rem;
-    }
-
-    .content {
-      flex-direction: row;
-      gap: 3rem;
-      align-items: flex-start;
-    }
-
-    .feature {
-      flex: 1;
-    }
-
-    .feature h2 {
-      font-size: 1.5rem;
-    }
-  }
-</style>
+    <footer class="text-center text-slate-600">
+      <p>This website is maintained by Ward Program. All rights reserved. &copy; {new Date().getFullYear()}</p>
+      <p>Not an official church website.</p>
+    </footer>
+  </main>
+</div>
