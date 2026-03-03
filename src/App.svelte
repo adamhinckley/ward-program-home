@@ -93,13 +93,57 @@
       />
     </section>
 
-    <section class="mb-12 md:mb-16 ">
+    <section class="mb-12 md:mb-16">
       <div class="mb-6 text-center">
         <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">Compare Your Options</h2>
         <p class="m-0 text-base text-slate-600 md:text-lg">A side-by-side look at privacy, convenience, and cost.</p>
       </div>
 
-      <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div class="grid grid-cols-1 gap-4 md:hidden">
+        {#each comparisonRows as row}
+          <article class={`rounded-2xl border p-4 shadow-sm ${row.featured ? 'border-indigo-200 bg-indigo-50/70' : 'border-slate-200 bg-white'}`}>
+            <div class="mb-3 flex items-center gap-2">
+              {#if row.link}
+                <a href={row.link} rel="noopener noreferrer" class="text-base text-slate-800 underline decoration-slate-400 underline-offset-2 transition-colors hover:text-indigo-700">{row.name}</a>
+              {:else}
+                <h3 class={`m-0 text-base ${row.featured ? 'font-semibold tracking-[0.02em] text-indigo-800' : 'font-medium text-slate-900'}`}>{row.name}</h3>
+              {/if}
+              {#if row.featured}
+                <span class="rounded-full border border-indigo-200 bg-indigo-100 px-2 py-0.5 text-xs tracking-[0.04em] text-indigo-700">Best for privacy</span>
+              {/if}
+            </div>
+
+            <dl class="m-0 grid grid-cols-1 gap-2 text-sm">
+              <div>
+                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Is it private?</dt>
+                <dd class="m-0 text-slate-700">{row.visibility}</dd>
+              </div>
+              <div>
+                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Cost</dt>
+                <dd class="m-0 text-slate-700">{row.cost}</dd>
+              </div>
+              <div>
+                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">QR Code</dt>
+                <dd class="m-0 text-slate-700">{row.qrCode}</dd>
+              </div>
+              <div>
+                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Requires App Download</dt>
+                <dd class="m-0 text-slate-700">{row.appDownload}</dd>
+              </div>
+              <div>
+                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Convenience</dt>
+                <dd class="m-0 text-amber-600">{row.convenience}</dd>
+              </div>
+              <div>
+                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Details</dt>
+                <dd class="m-0 text-slate-700">{row.notes}</dd>
+              </div>
+            </dl>
+          </article>
+        {/each}
+      </div>
+
+      <div class="hidden overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm md:block">
         <table class="w-full min-w-262.5 border-collapse text-left">
           <thead>
             <tr class="border-b border-slate-200 bg-slate-50 text-sm tracking-[0.03em] text-slate-700 md:text-base">
