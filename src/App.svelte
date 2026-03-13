@@ -3,259 +3,388 @@
   import OutlineButton from './lib/OutlineButton.svelte';
   import FeatureCard from './lib/FeatureCard.svelte';
 
+  const iconShield = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`;
+  const iconQr = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>`;
+  const iconPhone = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`;
+
   const comparisonRows = [
     {
       name: 'Ward Program',
       link: null,
-      visibility: "Yes — your data is never made public. It's only accessible via your private URL and custom QR code.",
-      cost: '$3 per month for your entire ward',
-      qrCode: 'Yes',
-      appDownload: 'No — easily added to home screen',
-      convenience: '★★★★★',
-      notes: 'Private and not searchable. Clean interface and easy to use.',
+      isPrivate: true,
+      hasQr: true,
+      noApp: true,
+      cost: 'Free for ward members — $2.99/mo for editing access with a 30 day free trial.',
+      notes: 'Private, clean, and purpose-built for sacrament meeting programs.',
       featured: true
     },
     {
       name: 'WardBullet',
       link: 'https://www.wardbullet.com/',
-      visibility: 'No — anyone can look up your ward and find private information.',
+      isPrivate: false,
+      hasQr: true,
+      noApp: false,
       cost: 'Free',
-      qrCode: 'Yes',
-      appDownload: 'Yes',
-      convenience: '★★★★',
-      notes: 'Simple and free, but searchable data can lead to doxing.',
+      notes: 'Searchable public data can lead to privacy concerns.',
       featured: false
     },
     {
       name: 'Ward Bulletin App',
       link: 'https://wardbulletin.app/home',
-      visibility: 'No — anyone can look up your ward and find private information.',
+      isPrivate: false,
+      hasQr: false,
+      noApp: true,
       cost: 'Free',
-      qrCode: 'Not built in (managed separately)',
-      appDownload: 'No',
-      convenience: '★★★',
-      notes: 'Good solution overall, but searchable ward data can lead to doxing.',
+      notes: 'Searchable ward data; no built-in QR code.',
       featured: false
     },
     {
       name: 'Canva',
       link: null,
-      visibility: 'No public lookup (shared links or exported PDF access only).',
-      cost: 'Free or $15/month for Pro',
-      qrCode: 'Not built in (managed separately)',
-      appDownload: 'No',
-      convenience: '★★★',
-      notes: 'Excellent templates, but setup and sharing management take more effort.  Lacks options without a pro subscription.',
+      isPrivate: null,
+      hasQr: false,
+      noApp: true,
+      cost: 'Free–$15/mo',
+      notes: 'Great templates, but not built for ward programs.',
       featured: false
     },
     {
       name: 'Google Docs',
       link: null,
-      visibility: 'No public lookup (you manage shared links).',
+      isPrivate: null,
+      hasQr: false,
+      noApp: true,
       cost: 'Free',
-      qrCode: 'Not built in (managed separately)',
-      appDownload: 'No',
-      convenience: '★★★',
-      notes: 'Works well for documents, but more manual than purpose-built tools.',
+      notes: 'Manual process; not a purpose-built tool.',
       featured: false
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: 'What is Ward Program?',
+      answer: 'Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple digital program that members access via QR code or a private link — with none of your congregation data ever made public.',
+      open: true
+    },
+    {
+      question: 'How is Ward Program different from WardBullet or Ward Bulletin App?',
+      answer: 'The key difference is <strong>privacy</strong>. Both WardBullet and Ward Bulletin App publish ward information in searchable public directories — meaning anyone can look up your congregation and find details about members, speakers, and meetings. Ward Program never makes your data public. Your program is only accessible through a private URL and your custom QR code. Additionally, Ward Program requires no app download — it works directly in any mobile browser.',
+      open: false
+    },
+    {
+      question: 'How much does Ward Program cost?',
+      answer: 'Ward Program is free for ward members to view.  Editing and publishing access for the ward costs $2.99 per month. This includes unlimited program editing, QR code generation, and private sharing. There are no hidden fees, no per-member charges, and no upsells.',
+      open: false
+    },
+    {
+      question: 'Can I sponsor this for my ward?',
+      answer: "Absolutely! Many wards do exactly that.  It's only $2.99 a month for editing and publishing access for the ward.  Everyone can view the program for free — no login or account needed.  So one person can easily cover the cost to provide this service to the entire ward.  Once you create the account you can invite others to create an account and help edit the program, if you'd like, but only one account needs to pay the monthly fee.",
+      open: false
+    },
+    {
+      question: 'Do members need to download an app?',
+      answer: "No. Members simply scan the QR code displayed in your church building (or tap a shared link) to view the program in their phone's browser. They can also add it to their home screen for instant access each Sunday — no app store download required.",
+      open: false
+    },
+    {
+      question: 'Is my ward\'s information private and secure?',
+      answer: "Yes. Ward Program never publishes your ward's data in any public directory. Your weekly program is only accessible via your private URL and custom QR code. No one outside your congregation can search for or discover your ward's information. This is the core reason Ward Program exists — to give wards a safe, private alternative to publicly-searchable bulletin tools.",
+      open: false
+    },
+    {
+      question: 'How do I get started?',
+      answer: 'Getting started takes just a few minutes. Visit the <a href="https://app.wardprogram.com/sign-up" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">sign-up page</a> to create your account, then use the editor to build your first program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">try the editor demo</a> to see how it works before signing up.',
+      open: false
+    },
+    {
+      question: "Why isn't it free?",
+      answer: "Ward Program requires servers, databases, and infrastructure that cost real money to run, and those costs grow with every ward that signs up. Rather than covering those expenses with ads, selling your data, or making your ward's information publicly searchable, Ward Program charges a straightforward <strong>$2.99 per month</strong>. That keeps the lights on, ensures your data stays completely private, and allows continued development of new features. It's a small cost that a single member, the bishopric, or the ward council can easily cover — and it means Ward Program answers to your ward, not to advertisers.",
+      open: false
     }
   ];
 </script>
 
-<div class="min-h-screen bg-linear-to-b from-slate-50 via-white to-slate-100">
-  <main class="flex min-h-screen w-full max-w-full flex-col px-4 py-8 text-slate-900 md:px-8 md:py-12 lg:mx-auto lg:max-w-300 lg:px-12 lg:py-16">
-    <header class="flex justify-end">
-      <OutlineButton href="https://app.wardprogram.com/login" text="Admin Login" />
-    </header>
-    <section class="mb-12 mt-6 rounded-3xl border border-slate-200 bg-white/80 px-4 py-12 text-center backdrop-blur-sm md:mb-16 md:px-8 md:py-16 lg:mb-20 lg:px-8 lg:py-20">
-      <div class="mb-4 flex items-center justify-center gap-3">
-        <img src={logo} alt="Ward Program logo — private sacrament meeting program manager" class="block h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12" />
-        <span class="text-2xl font-normal tracking-[0.05em] text-slate-900 md:text-[1.75rem] lg:text-[2rem]">Ward Program</span>
+<div class="min-h-screen bg-linear-to-b from-slate-50 via-white to-slate-50">
+
+  <!-- ── Top Banner ── -->
+  <div class="bg-blue-950 text-white">
+    <div class="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm tracking-wide">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 opacity-70"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span class="opacity-90">Privacy-first digital programs — <strong class="font-semibold">$2.99/mo</strong> for your entire ward</span>
+    </div>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
+      <a href="/" class="flex items-center gap-2.5 no-underline">
+        <img src={logo} alt="Ward Program logo" class="block h-7 w-7" />
+        <span class="text-lg font-semibold tracking-tight text-blue-950">Ward Program</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" class="hidden text-sm font-medium text-slate-600 no-underline transition-colors hover:text-blue-950 md:inline">View Demo</a>
+        <OutlineButton href="https://app.wardprogram.com/login" text="Admin Login" size="sm" />
       </div>
-      <h1 class="mb-4 text-[2.5rem] leading-[1.2] font-light tracking-[0.05em] text-slate-900 md:text-[4rem] lg:text-[5rem]">plain like paper</h1>
-      <p class="m-0 text-base font-normal text-slate-600 md:text-lg lg:text-xl">A private, simple sacrament meeting program for your ward.</p>
-      <p class="m-0 mt-2 text-lg font-normal text-slate-500 md:text-xl lg:text-2xl">No need to be complicated.</p>
+    </div>
+  </nav>
+
+  <main class="flex w-full flex-col text-slate-900">
+
+    <!-- ── Hero ── -->
+    <section class="px-4 pb-16 pt-16 md:px-8 md:pb-20 md:pt-20 lg:pb-24 lg:pt-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-4 py-1.5 text-sm font-medium text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Trusted by 50+ wards
+        </div>
+        <h1 class="mb-6 text-4xl font-bold leading-tight tracking-tight text-blue-950 md:text-5xl lg:text-6xl">The private sacrament meeting program your ward deserves</h1>
+        <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">Create, share, and manage your ward's weekly program with complete privacy. No public listings. No app download required.</p>
+        <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+          <OutlineButton href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" text="View Demo" variant="primary" size="lg" />
+          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Get Started" variant="outline" size="lg" />
+        </div>
+      </div>
     </section>
 
-    <section class="mb-12 grid grid-cols-1 gap-12 md:mb-16 md:grid-cols-3 md:gap-10 lg:gap-12">
-      <FeatureCard
-        title="Edit your weekly sacrament meeting program"
-        body="Create and manage your LDS ward's weekly program in minutes. Simple, straightforward, and designed specifically for sacrament meeting programs."
-      />
-
-      <FeatureCard
-        title="Private and secure — your data stays hidden"
-        body="Unlike WardBullet and Ward Bulletin App, your congregation information is never made public or searchable. No one can look up your ward's details."
-      />
-
-      <FeatureCard
-        title="QR code for your church building"
-        body="Generate a custom QR code to display in your church building. Members scan it to access the program on their phones — no app download needed."
-      />
+    <!-- ── Trust Strip ── -->
+    <section class="border-y border-slate-200 bg-slate-50/80 px-4 py-5">
+      <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-600">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Private by default
+        </span>
+        <span class="hidden h-4 w-px bg-slate-300 sm:block" aria-hidden="true"></span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          No app required
+        </span>
+        <span class="hidden h-4 w-px bg-slate-300 sm:block" aria-hidden="true"></span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Ready in minutes
+        </span>
+      </div>
     </section>
 
-    <section class="mb-12 md:mb-16">
-      <div class="mb-6 text-center">
-        <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">Compare Your Options</h2>
-        <p class="m-0 text-base text-slate-600 md:text-lg">A side-by-side look at privacy, convenience, and cost.</p>
+    <!-- ── Features ── -->
+    <section class="px-4 py-16 md:px-8 md:py-20 lg:py-24">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-12 text-center">
+          <h2 class="mb-3 text-3xl font-bold tracking-tight text-blue-950 md:text-4xl">Everything your ward needs</h2>
+          <p class="mx-auto max-w-2xl text-base text-slate-600 md:text-lg">Simple tools built specifically for sacrament meeting programs — nothing more, nothing less.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+          <FeatureCard
+            icon={iconShield}
+            title="Private and secure"
+            body="Your congregation information is never made public or searchable. No one can look up your ward's details — unlike other bulletin tools."
+          />
+          <FeatureCard
+            icon={iconQr}
+            title="QR code sharing"
+            body="Generate a custom QR code for your church building. Members scan and view — no account, no app download, no friction."
+          />
+          <FeatureCard
+            icon={iconPhone}
+            title="Works on any phone"
+            body="Opens directly in any mobile browser. Members can save it to their home screen for instant access each Sunday."
+          />
+        </div>
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 gap-4 md:hidden">
-        {#each comparisonRows as row}
-          <article class={`rounded-2xl border p-4 shadow-sm ${row.featured ? 'border-indigo-200 bg-indigo-50/70' : 'border-slate-200 bg-white'}`}>
-            <div class="mb-3 flex items-center gap-2">
-              {#if row.link}
-                <a href={row.link} rel="noopener noreferrer" class="text-base text-slate-800 underline decoration-slate-400 underline-offset-2 transition-colors hover:text-indigo-700">{row.name}</a>
-              {:else}
-                <h3 class={`m-0 text-base ${row.featured ? 'font-semibold tracking-[0.02em] text-indigo-800' : 'font-medium text-slate-900'}`}>{row.name}</h3>
-              {/if}
-              {#if row.featured}
-                <span class="rounded-full border border-indigo-200 bg-indigo-100 px-2 py-0.5 text-xs tracking-[0.04em] text-indigo-700">Best for privacy</span>
-              {/if}
-            </div>
+    <!-- ── Comparison Table ── -->
+    <section class="bg-slate-50/80 px-4 py-16 md:px-8 md:py-20 lg:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-10 text-center">
+          <h2 class="mb-3 text-3xl font-bold tracking-tight text-blue-950 md:text-4xl">Compare your options</h2>
+          <p class="mx-auto max-w-2xl text-base text-slate-600 md:text-lg">See how Ward Program stacks up on privacy, features, and cost.</p>
+        </div>
 
-            <dl class="m-0 grid grid-cols-1 gap-2 text-sm">
-              <div>
-                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Is it private?</dt>
-                <dd class="m-0 text-slate-700">{row.visibility}</dd>
+        <!-- Mobile: Comparison cards -->
+        <div class="grid grid-cols-1 gap-4 md:hidden">
+          {#each comparisonRows as row}
+            <article class={`rounded-xl border p-5 ${row.featured ? 'border-teal-300 bg-teal-50/60 shadow-sm ring-1 ring-teal-200' : 'border-slate-200 bg-white'}`}>
+              <div class="mb-4 flex items-center gap-2.5">
+                {#if row.link}
+                  <a href={row.link} rel="noopener noreferrer" class="text-base font-medium text-slate-800 underline decoration-slate-300 underline-offset-2 transition-colors hover:text-blue-900">{row.name}</a>
+                {:else}
+                  <h3 class={`m-0 text-base ${row.featured ? 'font-bold text-blue-950' : 'font-medium text-slate-900'}`}>{row.name}</h3>
+                {/if}
+                {#if row.featured}
+                  <span class="rounded-full bg-teal-600 px-2.5 py-0.5 text-xs font-semibold text-white">Recommended</span>
+                {/if}
               </div>
-              <div>
-                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Cost</dt>
-                <dd class="m-0 text-slate-700">{row.cost}</dd>
+              <div class="mb-3 grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-2 text-sm">
+                  {#if row.isPrivate === true}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-teal-600"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span class="text-slate-700">Private</span>
+                  {:else if row.isPrivate === false}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-rose-500"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    <span class="text-slate-700">Not private</span>
+                  {:else}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-amber-500"><path d="M5 12h14"/></svg>
+                    <span class="text-slate-500">Varies</span>
+                  {/if}
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  {#if row.hasQr}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-teal-600"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span class="text-slate-700">QR built-in</span>
+                  {:else}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-rose-500"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    <span class="text-slate-700">No QR</span>
+                  {/if}
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  {#if row.noApp}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-teal-600"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span class="text-slate-700">No app needed</span>
+                  {:else}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-rose-500"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    <span class="text-slate-700">App required</span>
+                  {/if}
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-semibold text-slate-800">{row.cost}</span>
+                </div>
               </div>
-              <div>
-                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">QR Code</dt>
-                <dd class="m-0 text-slate-700">{row.qrCode}</dd>
-              </div>
-              <div>
-                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Requires App Download</dt>
-                <dd class="m-0 text-slate-700">{row.appDownload}</dd>
-              </div>
-              <div>
-                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Convenience</dt>
-                <dd class="m-0 text-amber-600">{row.convenience}</dd>
-              </div>
-              <div>
-                <dt class="text-xs tracking-[0.04em] text-slate-500 uppercase">Details</dt>
-                <dd class="m-0 text-slate-700">{row.notes}</dd>
-              </div>
-            </dl>
-          </article>
-        {/each}
-      </div>
+              <p class="m-0 text-sm leading-relaxed text-slate-500">{row.notes}</p>
+            </article>
+          {/each}
+        </div>
 
-      <div class="hidden overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm md:block">
-        <table class="w-full min-w-262.5 border-collapse text-left">
-          <thead>
-            <tr class="border-b border-slate-200 bg-slate-50 text-sm tracking-[0.03em] text-slate-700 md:text-base">
-              <th class="px-4 py-3 font-normal">Solution</th>
-              <th class="px-4 py-3 font-normal">Is it private?</th>
-              <th class="px-4 py-3 font-normal">Cost</th>
-              <th class="px-4 py-3 font-normal">QR Code</th>
-              <th class="px-4 py-3 font-normal">Requires App Download</th>
-              <th class="px-4 py-3 font-normal">Convenience</th>
-              <th class="px-4 py-3 font-normal">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each comparisonRows as row}
-              <tr class={`border-b border-slate-200 align-top ${row.featured ? 'bg-indigo-50/70' : 'bg-white'}`}>
-                <td class="px-4 py-4 text-sm md:text-base">
-                  <div class="flex items-center gap-2">
-                    {#if row.link}
-                      <a href={row.link} rel="noopener noreferrer" class="text-slate-800 underline decoration-slate-400 underline-offset-2 transition-colors hover:text-indigo-700">{row.name}</a>
-                    {:else}
-                      <span class={row.featured ? 'font-semibold tracking-[0.02em] text-indigo-800' : 'text-slate-900'}>{row.name}</span>
-                    {/if}
-                    {#if row.featured}
-                      <span class="rounded-full text-center border border-indigo-200 bg-indigo-100 px-2 py-0.5 text-xs tracking-[0.04em] text-indigo-700">Best for privacy</span>
-                    {/if}
-                  </div>
-                </td>
-                <td class="px-4 py-4 text-sm leading-normal text-slate-700 md:text-base">{row.visibility}</td>
-                <td class="px-4 py-4 text-sm text-slate-700 md:text-base">{row.cost}</td>
-                <td class="px-4 py-4 text-sm text-slate-700 md:text-base">{row.qrCode}</td>
-                <td class="px-4 py-4 text-sm leading-normal text-slate-700 md:text-base">{row.appDownload}</td>
-                <td class="px-4 py-4 text-sm text-amber-600 md:text-base">{row.convenience}</td>
-                <td class="px-4 py-4 text-sm leading-normal text-slate-700 md:text-base">{row.notes}</td>
+        <!-- Desktop: Clean table -->
+        <div class="hidden overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm md:block">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <th class="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Solution</th>
+                <th class="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-slate-500">Private</th>
+                <th class="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-slate-500">QR Code</th>
+                <th class="px-5 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-slate-500">No App</th>
+                <th class="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Cost</th>
+                <th class="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Notes</th>
               </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="px-4 py-8 text-center">
-      <div class="mb-8 flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-6">
-        <OutlineButton href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" text="View Program Demo" />
-        <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="View Editor Demo" />
-      </div>
-    </section>
-
-    <section class="mb-12 md:mb-16">
-      <div class="mb-8 text-center">
-        <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">How It Works</h2>
-        <p class="m-0 text-base text-slate-600 md:text-lg">Get your ward's digital sacrament meeting program up and running in minutes.</p>
-      </div>
-      <div class="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-        <div class="text-center">
-          <div class="mb-3 text-3xl">1</div>
-          <h3 class="mb-2 text-lg font-medium text-slate-900">Create your program</h3>
-          <p class="m-0 text-sm text-slate-600">Log in to the editor and add your sacrament meeting details — speakers, hymns, announcements, and more.</p>
+            </thead>
+            <tbody>
+              {#each comparisonRows as row, i}
+                <tr class={`${i < comparisonRows.length - 1 ? 'border-b border-slate-100' : ''} ${row.featured ? 'bg-teal-50/50' : 'bg-white hover:bg-slate-50/50'} transition-colors`}>
+                  <td class="px-5 py-4">
+                    <div class="flex items-center gap-2.5">
+                      {#if row.featured}
+                        <span class="font-semibold text-blue-950">{row.name}</span>
+                        <span class="rounded-full bg-teal-600 px-2 py-0.5 text-xs font-semibold text-white">Recommended</span>
+                      {:else if row.link}
+                        <a href={row.link} rel="noopener noreferrer" class="text-slate-700 underline decoration-slate-300 underline-offset-2 transition-colors hover:text-blue-900">{row.name}</a>
+                      {:else}
+                        <span class="text-slate-700">{row.name}</span>
+                      {/if}
+                    </div>
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    {#if row.isPrivate === true}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-teal-600"><path d="M20 6 9 17l-5-5"/></svg>
+                    {:else if row.isPrivate === false}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-rose-500"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    {:else}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-amber-500"><path d="M5 12h14"/></svg>
+                    {/if}
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    {#if row.hasQr}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-teal-600"><path d="M20 6 9 17l-5-5"/></svg>
+                    {:else}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-rose-500"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    {/if}
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    {#if row.noApp}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-teal-600"><path d="M20 6 9 17l-5-5"/></svg>
+                    {:else}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-rose-500"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    {/if}
+                  </td>
+                  <td class="px-5 py-4">
+                    <span class={row.featured ? 'font-semibold text-blue-950' : 'text-slate-700'}>{row.cost}</span>
+                  </td>
+                  <td class="px-5 py-4 text-slate-500">{row.notes}</td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
         </div>
-        <div class="text-center">
-          <div class="mb-3 text-3xl">2</div>
-          <h3 class="mb-2 text-lg font-medium text-slate-900">Share with your ward</h3>
-          <p class="m-0 text-sm text-slate-600">Print the generated QR code and display it in your church building, or share the private link directly.</p>
+      </div>
+    </section>
+
+    <!-- ── How It Works ── -->
+    <section class="px-4 py-16 md:px-8 md:py-20 lg:py-24">
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-12 text-center">
+          <h2 class="mb-3 text-3xl font-bold tracking-tight text-blue-950 md:text-4xl">Up and running in minutes</h2>
+          <p class="mx-auto max-w-2xl text-base text-slate-600 md:text-lg">Three simple steps to a digital sacrament meeting program.</p>
         </div>
-        <div class="text-center">
-          <div class="mb-3 text-3xl">3</div>
-          <h3 class="mb-2 text-lg font-medium text-slate-900">Members view on their phones</h3>
-          <p class="m-0 text-sm text-slate-600">Members scan the QR code — no app download needed. They can save it to their home screen for instant access each week.</p>
+        <div class="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+          <div class="flex flex-col items-center text-center md:items-center">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-blue-950 text-lg font-bold text-white">1</div>
+            <h3 class="mb-2 text-lg font-semibold text-blue-950">Create your program</h3>
+            <p class="m-0 text-sm leading-relaxed text-slate-600">Log in to the editor and add your sacrament meeting details — speakers, hymns, announcements, and more.</p>
+          </div>
+          <div class="flex flex-col items-center text-center md:items-center">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-blue-950 text-lg font-bold text-white">2</div>
+            <h3 class="mb-2 text-lg font-semibold text-blue-950">Share with your ward</h3>
+            <p class="m-0 text-sm leading-relaxed text-slate-600">Print the generated QR code and display it in your church building, or share the private link directly.</p>
+          </div>
+          <div class="flex flex-col items-center text-center md:items-center">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-blue-950 text-lg font-bold text-white">3</div>
+            <h3 class="mb-2 text-lg font-semibold text-blue-950">Members view on their phones</h3>
+            <p class="m-0 text-sm leading-relaxed text-slate-600">Members scan the QR code — no app download needed. Save to home screen for instant access each week.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="mb-12 md:mb-16">
-      <div class="mb-8 text-center">
-        <h2 class="mb-2 text-3xl font-light tracking-[0.04em] text-slate-900 md:text-4xl">Frequently Asked Questions</h2>
-        <p class="m-0 text-base text-slate-600 md:text-lg">Everything you need to know about Ward Program.</p>
-      </div>
-      <div class="mx-auto max-w-3xl space-y-6">
-        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6" open>
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">What is Ward Program?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple digital program that members access via QR code or a private link — with none of your congregation data ever made public.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">How is Ward Program different from WardBullet or Ward Bulletin App?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">The key difference is <strong>privacy</strong>. Both WardBullet and Ward Bulletin App publish ward information in searchable public directories — meaning anyone can look up your congregation and find details about members, speakers, and meetings. Ward Program never makes your data public. Your program is only accessible through a private URL and your custom QR code. Additionally, Ward Program requires no app download — it works directly in any mobile browser.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">How much does Ward Program cost?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">Ward Program costs <strong>$3 per month</strong> for your entire ward. This includes unlimited program editing, QR code generation, and private sharing for your entire ward. There are no hidden fees, no per-member charges, and no upsells.</p>
-        </details>
-          <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">Can I sponsor this for my ward?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">Yes! You can sponsor Ward Program for your entire ward, covering the $3 per month cost. This ensures all members have access to the program without any individual charges.  The best way to do this is create an email address for your ward and sign up using that.  Then give access to that emaill address to the brother or sister in charge of managing program.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">Do members need to download an app?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">No. Members simply scan the QR code displayed in your church building (or tap a shared link) to view the program in their phone's browser. They can also add it to their home screen for instant access each Sunday — no app store download required.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">Is my ward's information private and secure?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">Yes. Ward Program never publishes your ward's data in any public directory. Your weekly program is only accessible via your private URL and custom QR code. No one outside your congregation can search for or discover your ward's information. This is the core reason Ward Program exists — to give wards a safe, private alternative to publicly-searchable bulletin tools.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-          <summary class="cursor-pointer text-lg font-medium text-slate-900 md:text-xl">How do I get started?</summary>
-          <p class="mt-3 text-base leading-relaxed text-slate-600">Getting started takes just a few minutes. Visit the <a href="https://app.wardprogram.com/login" class="text-indigo-600 underline underline-offset-2 hover:text-indigo-800">admin login</a> to create your account, then use the editor to build your first program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-indigo-600 underline underline-offset-2 hover:text-indigo-800">try the editor demo</a> to see how it works before signing up.</p>
-        </details>
+    <!-- ── CTA Section ── -->
+    <section class="bg-blue-950 px-4 py-16 md:px-8 md:py-20">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">Ready to simplify your ward's Sunday?</h2>
+        <p class="mx-auto mb-8 max-w-xl text-lg text-blue-200">Join wards already using the most private, simple way to share their sacrament meeting program.</p>
+        <p class="mt-2 text-center text-sm text-blue-200 mb-12">Free 30-day trial.  No credit card required to start.</p>
+        <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Get Started — $2.99/mo" variant="primary" size="lg" />
+          <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="Try the Editor Demo" variant="outline-white" size="lg" />
+        </div>
       </div>
     </section>
 
-    <footer class="text-center text-slate-600">
-      <p>This website is maintained by Ward Program. All rights reserved. &copy; {new Date().getFullYear()}</p>
-      <p>Not an official website of <span class="italic">The Church of Jesus Christ of Latter-day Saints</span>.</p>
+    <!-- ── FAQ ── -->
+    <section class="px-4 py-16 md:px-8 md:py-20 lg:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="mb-10 text-center">
+          <h2 class="mb-3 text-3xl font-bold tracking-tight text-blue-950 md:text-4xl">Frequently asked questions</h2>
+          <p class="mx-auto max-w-xl text-base text-slate-600 md:text-lg">Everything you need to know about Ward Program.</p>
+        </div>
+        <div class="space-y-3">
+          {#each faqItems as item}
+            <details class="group rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-sm" open={item.open}>
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-semibold text-blue-950 md:px-6 md:py-5 md:text-lg">
+                <span>{item.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 text-slate-400"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="px-5 pb-5 md:px-6 md:pb-6">
+                <p class="m-0 text-base leading-relaxed text-slate-600">{@html item.answer}</p>
+              </div>
+            </details>
+          {/each}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="border-t border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
+      <p class="m-0">Ward Program. All rights reserved. &copy; {new Date().getFullYear()}</p>
+      <p class="m-0 mt-1">Not an official website of <span class="italic">The Church of Jesus Christ of Latter-day Saints</span>.</p>
     </footer>
   </main>
 </div>

@@ -1,11 +1,17 @@
 <script>
   let {
     title,
-    body
+    body,
+    icon = ''
   } = $props();
 </script>
 
-<div class="flex h-full flex-1 flex-col rounded-2xl border border-slate-200 bg-white px-6 py-8 text-center shadow-sm transition-transform duration-200 hover:-translate-y-1">
-  <h2 class="mb-4 text-2xl font-normal tracking-[0.02em] text-slate-900 md:text-[1.75rem] lg:text-2xl">{title}</h2>
-  <p class="mx-auto m-0 max-w-150 text-base leading-relaxed text-slate-600 md:text-lg">{body}</p>
+<div class="group flex h-full flex-1 flex-col rounded-xl border border-slate-200 bg-white px-6 py-8 text-left shadow-sm transition-all duration-200 hover:border-teal-200 hover:shadow-md">
+  {#if icon}
+    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-teal-50 text-teal-600 transition-colors group-hover:bg-teal-100">
+      {@html icon}
+    </div>
+  {/if}
+  <h2 class="mb-3 text-lg font-semibold leading-snug tracking-tight text-blue-950 md:text-xl">{title}</h2>
+  <p class="m-0 text-sm leading-relaxed text-slate-600 md:text-base">{body}</p>
 </div>
