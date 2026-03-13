@@ -63,12 +63,12 @@
   const faqItems = [
     {
       question: 'What is Ward Program?',
-      answer: 'Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple digital program that members access via QR code or a private link — with none of your congregation data ever made public.',
+      answer: 'Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple sacrament meeting program that members access via QR code or a private link — with none of your congregation data ever made public.',
       open: true
     },
     {
       question: 'How is Ward Program different from WardBullet or Ward Bulletin App?',
-      answer: 'The key difference is <strong>privacy-first design</strong>. Ward Program keeps your program accessible through your private URL and custom QR code, rather than through a public listing. If you are evaluating alternatives, review each tool\'s directory visibility and searchability policies. Ward Program also requires no app download and works directly in any mobile browser.',
+      answer: 'The key difference is <strong>privacy-first design</strong>. Ward Program keeps your sacrament meeting program accessible through your private URL and custom QR code, rather than through a public listing. If you are evaluating alternatives, review each tool\'s directory visibility and searchability policies. Ward Program also requires no app download and works directly in any mobile browser.',
       open: false
     },
     {
@@ -88,12 +88,12 @@
     },
     {
       question: 'Is my ward\'s information private and secure?',
-      answer: "Yes. Ward Program does not publish your ward's data in a public directory. Your weekly program is shared through your private URL and custom QR code, so it is not publicly discoverable by default. Ward Program was built to give wards a safer alternative to publicly listed bulletin tools.",
+      answer: "Yes. Ward Program does not publish your ward's data in a public directory. Your weekly sacrament meeting program is shared through your private URL and custom QR code, so it is not publicly discoverable by default. Traffic is encrypted in transit over HTTPS. Ward Program was built to give wards a safer alternative to publicly listed bulletin tools.",
       open: false
     },
     {
       question: 'How do I get started?',
-      answer: 'Getting started usually takes 3 to 5 minutes. Visit the <a href="https://app.wardprogram.com/sign-up" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">sign-up page</a> to create your account, then use the editor to build your first program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">try the editor demo</a> to see how it works before signing up.',
+      answer: 'Getting started usually takes 3 to 5 minutes. Visit the <a href="https://app.wardprogram.com/sign-up" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">sign-up page</a> to create your account, then use the editor to build your first sacrament meeting program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">try the editor demo</a> to see how it works before signing up.',
       open: false
     },
     {
@@ -110,7 +110,7 @@
   <div class="bg-blue-950 text-white">
     <div class="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm tracking-wide">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 opacity-70"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span class="opacity-90">Privacy-first digital programs — <strong class="font-semibold">$2.99/mo</strong> for your entire ward</span>
+      <span class="opacity-90">Privacy-first sacrament meeting programs — <strong class="font-semibold">$2.99/mo</strong> for your entire ward</span>
     </div>
   </div>
 
@@ -138,11 +138,12 @@
           Trusted by 50+ wards
         </div>
         <h1 class="mb-6 text-4xl font-bold leading-tight tracking-tight text-blue-950 md:text-5xl lg:text-6xl">The private sacrament meeting program your ward deserves</h1>
-        <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">Create, share, and manage your ward's weekly program with complete privacy. No public listings. No app download required.</p>
+        <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">Create, share, and manage your ward's weekly sacrament meeting program with complete privacy. No public listings. No app download required.</p>
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-          <OutlineButton href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" text="View Demo" variant="primary" size="lg" />
-          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Get Started" variant="outline" size="lg" />
+          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Start Free Trial - No Card Required" variant="primary" size="lg" />
+          <OutlineButton href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" text="View Program Demo" variant="outline" size="lg" />
         </div>
+        <p class="mt-4 text-sm font-medium text-teal-700">No credit card required for your free 30-day trial.</p>
       </div>
     </section>
 
@@ -156,12 +157,12 @@
         <span class="hidden h-4 w-px bg-slate-300 sm:block" aria-hidden="true"></span>
         <span class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          No app required
+          Scan and view - no download
         </span>
         <span class="hidden h-4 w-px bg-slate-300 sm:block" aria-hidden="true"></span>
         <span class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Ready in minutes
+          Ready in 3 to 5 minutes
         </span>
       </div>
     </section>
@@ -187,7 +188,7 @@
           <FeatureCard
             icon={iconPhone}
             title="Works on any phone"
-            body="Opens directly in any mobile browser. Members can save it to their home screen for instant access each Sunday."
+            body="Members get instant access in any mobile browser. They can save it to their home screen for each Sunday."
           />
         </div>
       </div>
@@ -348,12 +349,12 @@
     <!-- ── CTA Section ── -->
     <section class="bg-blue-950 px-4 py-16 md:px-8 md:py-20">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">Ready to simplify your ward's Sunday?</h2>
-        <p class="mx-auto mb-8 max-w-xl text-lg text-blue-200">Join wards already using the most private, simple way to share their sacrament meeting program.</p>
+        <h2 class="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">Make Sunday morning simpler for your ward</h2>
+        <p class="mx-auto mb-8 max-w-xl text-lg text-blue-200">Join 50+ wards using a private, simple way to share each sacrament meeting program.</p>
         <p class="mt-2 mb-12 text-center text-sm text-blue-200">Free 30-day trial with no credit card required. Then $2.99/month to continue.</p>
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Get Started — $2.99/mo" variant="primary" size="lg" />
-          <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="Try the Editor Demo" variant="outline-white" size="lg" />
+          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Start Free Trial - No Card Required" variant="primary" size="lg" />
+          <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="See Editor Demo" variant="outline-white" size="lg" />
         </div>
       </div>
     </section>
