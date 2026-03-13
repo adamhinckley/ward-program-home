@@ -12,6 +12,6 @@
       {@html icon}
     </div>
   {/if}
-  <h2 class="mb-3 text-lg font-semibold leading-snug tracking-tight text-blue-950 md:text-xl">{title}</h2>
+  <h3 class="mb-3 text-lg font-semibold leading-snug tracking-tight text-blue-950 md:text-xl">{title}</h3>
   <p class="m-0 text-sm leading-relaxed text-slate-600 md:text-base">{body}</p>
 </div>

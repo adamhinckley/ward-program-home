@@ -15,7 +15,7 @@
       hasQr: true,
       noApp: true,
       cost: 'Free for ward members — $2.99/mo for editing access with a 30 day free trial.',
-      notes: 'Private, clean, and purpose-built for sacrament meeting programs.',
+      notes: 'Private sharing with built-in QR code and simple weekly editing.',
       featured: true
     },
     {
@@ -25,7 +25,7 @@
       hasQr: true,
       noApp: false,
       cost: 'Free',
-      notes: 'Searchable public data can lead to privacy concerns.',
+      notes: 'Ward data listed in a searchable public directory.',
       featured: false
     },
     {
@@ -35,7 +35,7 @@
       hasQr: false,
       noApp: true,
       cost: 'Free',
-      notes: 'Searchable ward data; no built-in QR code.',
+      notes: 'Ward data listed in a searchable public directory; no built-in QR code.',
       featured: false
     },
     {
@@ -45,7 +45,7 @@
       hasQr: false,
       noApp: true,
       cost: 'Free–$15/mo',
-      notes: 'Great templates, but not built for ward programs.',
+      notes: 'General design tool; requires manual weekly setup and sharing.',
       featured: false
     },
     {
@@ -55,7 +55,7 @@
       hasQr: false,
       noApp: true,
       cost: 'Free',
-      notes: 'Manual process; not a purpose-built tool.',
+      notes: 'Manual document workflow; no built-in QR code automation.',
       featured: false
     }
   ];
@@ -68,7 +68,7 @@
     },
     {
       question: 'How is Ward Program different from WardBullet or Ward Bulletin App?',
-      answer: 'The key difference is <strong>privacy</strong>. Both WardBullet and Ward Bulletin App publish ward information in searchable public directories — meaning anyone can look up your congregation and find details about members, speakers, and meetings. Ward Program never makes your data public. Your program is only accessible through a private URL and your custom QR code. Additionally, Ward Program requires no app download — it works directly in any mobile browser.',
+      answer: 'The key difference is <strong>privacy-first design</strong>. Ward Program keeps your program accessible through your private URL and custom QR code, rather than through a public listing. If you are evaluating alternatives, review each tool\'s directory visibility and searchability policies. Ward Program also requires no app download and works directly in any mobile browser.',
       open: false
     },
     {
@@ -78,7 +78,7 @@
     },
     {
       question: 'Can I sponsor this for my ward?',
-      answer: "Absolutely! Many wards do exactly that.  It's only $2.99 a month for editing and publishing access for the ward.  Everyone can view the program for free — no login or account needed.  So one person can easily cover the cost to provide this service to the entire ward.  Once you create the account you can invite others to create an account and help edit the program, if you'd like, but only one account needs to pay the monthly fee.",
+      answer: 'Absolutely. Many wards do exactly that. Editing and publishing access is just $2.99 per month for the ward, while everyone can view the program for free with no login required. One person can sponsor it for the entire ward. Once you create the account, you can invite others to help edit, and only one paid subscription is needed.',
       open: false
     },
     {
@@ -88,12 +88,12 @@
     },
     {
       question: 'Is my ward\'s information private and secure?',
-      answer: "Yes. Ward Program never publishes your ward's data in any public directory. Your weekly program is only accessible via your private URL and custom QR code. No one outside your congregation can search for or discover your ward's information. This is the core reason Ward Program exists — to give wards a safe, private alternative to publicly-searchable bulletin tools.",
+      answer: "Yes. Ward Program does not publish your ward's data in a public directory. Your weekly program is shared through your private URL and custom QR code, so it is not publicly discoverable by default. Ward Program was built to give wards a safer alternative to publicly listed bulletin tools.",
       open: false
     },
     {
       question: 'How do I get started?',
-      answer: 'Getting started takes just a few minutes. Visit the <a href="https://app.wardprogram.com/sign-up" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">sign-up page</a> to create your account, then use the editor to build your first program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">try the editor demo</a> to see how it works before signing up.',
+      answer: 'Getting started usually takes 3 to 5 minutes. Visit the <a href="https://app.wardprogram.com/sign-up" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">sign-up page</a> to create your account, then use the editor to build your first program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">try the editor demo</a> to see how it works before signing up.',
       open: false
     },
     {
@@ -177,7 +177,7 @@
           <FeatureCard
             icon={iconShield}
             title="Private and secure"
-            body="Your congregation information is never made public or searchable. No one can look up your ward's details — unlike other bulletin tools."
+            body="Your congregation information is not publicly listed or searchable by default. Share access with your private link and QR code."
           />
           <FeatureCard
             icon={iconQr}
@@ -322,7 +322,7 @@
     <section class="px-4 py-16 md:px-8 md:py-20 lg:py-24">
       <div class="mx-auto max-w-4xl">
         <div class="mb-12 text-center">
-          <h2 class="mb-3 text-3xl font-bold tracking-tight text-blue-950 md:text-4xl">Up and running in minutes</h2>
+          <h2 class="mb-3 text-3xl font-bold tracking-tight text-blue-950 md:text-4xl">Create your first program in 3 to 5 minutes</h2>
           <p class="mx-auto max-w-2xl text-base text-slate-600 md:text-lg">Three simple steps to a digital sacrament meeting program.</p>
         </div>
         <div class="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
@@ -350,7 +350,7 @@
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">Ready to simplify your ward's Sunday?</h2>
         <p class="mx-auto mb-8 max-w-xl text-lg text-blue-200">Join wards already using the most private, simple way to share their sacrament meeting program.</p>
-        <p class="mt-2 text-center text-sm text-blue-200 mb-12">Free 30-day trial.  No credit card required to start.</p>
+        <p class="mt-2 mb-12 text-center text-sm text-blue-200">Free 30-day trial with no credit card required. Then $2.99/month to continue.</p>
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
           <OutlineButton href="https://app.wardprogram.com/sign-up" text="Get Started — $2.99/mo" variant="primary" size="lg" />
           <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="Try the Editor Demo" variant="outline-white" size="lg" />
@@ -368,8 +368,8 @@
         <div class="space-y-3">
           {#each faqItems as item}
             <details class="group rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-sm" open={item.open}>
-              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-semibold text-blue-950 md:px-6 md:py-5 md:text-lg">
-                <span>{item.question}</span>
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 md:px-6 md:py-5">
+                <h3 class="m-0 text-base font-semibold text-blue-950 md:text-lg">{item.question}</h3>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 text-slate-400"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
               <div class="px-5 pb-5 md:px-6 md:pb-6">
