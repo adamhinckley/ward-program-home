@@ -482,7 +482,7 @@
             text="Start Free Trial - No Card Required"
             variant="primary"
             size="lg"
-            onClick={() => trackCtaClick('start_free_trial', 'bottom_cta', 'https://app.wardprogram.com/sign-up')}
+            onclick={() => trackCtaClick('start_free_trial', 'bottom_cta', 'https://app.wardprogram.com/sign-up')}
           />
           <OutlineButton
             href="https://app.wardprogram.com/demo/editor"
@@ -490,7 +490,7 @@
             text="See Editor Demo"
             variant="outline-white"
             size="lg"
-            onClick={() => trackCtaClick('see_editor_demo', 'bottom_cta', 'https://app.wardprogram.com/demo/editor')}
+            onclick={() => trackCtaClick('see_editor_demo', 'bottom_cta', 'https://app.wardprogram.com/demo/editor')}
           />
         </div>
       </div>
