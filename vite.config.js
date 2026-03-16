@@ -3,6 +3,7 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import tailwindcss from "@tailwindcss/vite";
 import prerender from "@prerenderer/rollup-plugin";
 import JSDOMRenderer from "@prerenderer/renderer-jsdom";
+import { JSDOM } from "jsdom";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -18,10 +19,13 @@ export default defineConfig({
           },
           postProcess(renderedRoute) {
             // Ensure the prerendered HTML is minified-friendly
-            renderedRoute.html = renderedRoute.html.replace(
-              /<div id="app"><\/div>/,
-              `<div id="app">${renderedRoute.html.match(/<div id="app">([\s\S]*?)<\/div>/)?.[1] || ""}</div>`,
-            );
+            const dom = new JSDOM(renderedRoute.html);
+            const app = dom.window.document.querySelector("#app");
+            if (app) {
+              const appContent = app.innerHTML;
+              app.innerHTML = appContent;
+            }
+            renderedRoute.html = dom.serialize();
             return renderedRoute;
           },
         }),

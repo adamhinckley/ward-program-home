@@ -13,6 +13,7 @@
     "@prerenderer/rollup-plugin": "^0.3.12",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@tailwindcss/vite": "^4.2.1",
+    "jsdom": "^29.0.0",
     "sharp": "^0.34.5",
     "svelte": "^5.43.8",
     "tailwindcss": "^4.2.1",
