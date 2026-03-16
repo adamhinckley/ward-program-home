@@ -24,6 +24,27 @@
   const iconQr = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>`;
   const iconPhone = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`;
 
+  /** @typedef {{ type: 'text', value: string }} TextFragment */
+  /** @typedef {{ type: 'strong', value: string }} StrongFragment */
+  /** @typedef {{ type: 'link', href: string, label: string }} LinkFragment */
+  /** @typedef {TextFragment | StrongFragment | LinkFragment} FaqFragment */
+
+  /** @param {string} value
+   *  @returns {TextFragment}
+   */
+  const text = (value) => ({ type: 'text', value });
+
+  /** @param {string} value
+   *  @returns {StrongFragment}
+   */
+  const strong = (value) => ({ type: 'strong', value });
+
+  /** @param {string} href
+   *  @param {string} label
+   *  @returns {LinkFragment}
+   */
+  const link = (href, label) => ({ type: 'link', href, label });
+
   const comparisonRows = [
     {
       name: 'Ward Program',
@@ -80,42 +101,98 @@
   const faqItems = [
     {
       question: 'What is Ward Program?',
-      answer: 'Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple sacrament meeting program that members access via QR code or a private link — with none of your congregation data ever made public.',
+      answer: [
+        [
+          text(
+            'Ward Program is a privacy-first digital tool for creating and sharing weekly sacrament meeting programs for LDS wards and congregations. It gives your ward a clean, simple sacrament meeting program that members access via QR code or a private link — with none of your congregation data ever made public.'
+          )
+        ]
+      ],
       open: true
     },
     {
       question: 'How is Ward Program different from WardBullet or Ward Bulletin App?',
-      answer: 'The key difference is <strong>privacy-first design</strong>. Ward Program keeps your sacrament meeting program accessible through your private URL and custom QR code, rather than through a public listing. If you are evaluating alternatives, review each tool\'s directory visibility and searchability policies. Ward Program also requires no app download and works directly in any mobile browser.',
+      answer: [
+        [
+          text('The key difference is '),
+          strong('privacy-first design'),
+          text(
+            '. Ward Program keeps your sacrament meeting program accessible through your private URL and custom QR code, rather than through a public listing. If you are evaluating alternatives, review each tool\'s directory visibility and searchability policies. Ward Program also requires no app download and works directly in any mobile browser.'
+          )
+        ]
+      ],
       open: false
     },
     {
       question: 'How much does Ward Program cost?',
-      answer: 'Ward Program is free for ward members to view.  Editing and publishing access for the ward costs $2.99 per month. This includes unlimited program editing, QR code generation, and private sharing. There are no hidden fees, no per-member charges, and no upsells.',
+      answer: [
+        [
+          text(
+            'Ward Program is free for ward members to view. Editing and publishing access for the ward costs $2.99 per month. This includes unlimited program editing, QR code generation, and private sharing. There are no hidden fees, no per-member charges, and no upsells.'
+          )
+        ]
+      ],
       open: false
     },
     {
       question: 'Can I sponsor this for my ward?',
-      answer: 'Absolutely. Many wards do exactly that. Editing and publishing access is just $2.99 per month for the ward, while everyone can view the program for free with no login required. One person can sponsor it for the entire ward. Once you create the account, you can invite others to help edit, and only one paid subscription is needed.',
+      answer: [
+        [
+          text(
+            'Absolutely. Many wards do exactly that. Editing and publishing access is just $2.99 per month for the ward, while everyone can view the program for free with no login required. One person can sponsor it for the entire ward. Once you create the account, you can invite others to help edit, and only one paid subscription is needed.'
+          )
+        ]
+      ],
       open: false
     },
     {
       question: 'Do members need to download an app?',
-      answer: "No. Members simply scan the QR code displayed in your church building (or tap a shared link) to view the program in their phone's browser. They can also add it to their home screen for instant access each Sunday — no app store download required.",
+      answer: [
+        [
+          text(
+            "No. Members simply scan the QR code displayed in your church building (or tap a shared link) to view the program in their phone's browser. They can also add it to their home screen for instant access each Sunday — no app store download required."
+          )
+        ]
+      ],
       open: false
     },
     {
       question: 'Is my ward\'s information private and secure?',
-      answer: "Yes. Ward Program does not publish your ward's data in a public directory. Your weekly sacrament meeting program is shared through your private URL and custom QR code, so it is not publicly discoverable by default. Traffic is encrypted in transit over HTTPS. Ward Program was built to give wards a safer alternative to publicly listed bulletin tools.",
+      answer: [
+        [
+          text(
+            "Yes. Ward Program does not publish your ward's data in a public directory. Your weekly sacrament meeting program is shared through your private URL and custom QR code, so it is not publicly discoverable by default. Traffic is encrypted in transit over HTTPS. Ward Program was built to give wards a safer alternative to publicly listed bulletin tools."
+          )
+        ]
+      ],
       open: false
     },
     {
       question: 'How do I get started?',
-      answer: 'Getting started usually takes 3 to 5 minutes. Visit the <a href="https://app.wardprogram.com/sign-up" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">sign-up page</a> to create your account, then use the editor to build your first sacrament meeting program. You can also <a href="https://app.wardprogram.com/demo/editor" class="text-teal-600 underline underline-offset-2 hover:text-teal-800 font-medium">try the editor demo</a> to see how it works before signing up.',
+      answer: [
+        [
+          text('Getting started usually takes 3 to 5 minutes. Visit the '),
+          link('https://app.wardprogram.com/sign-up', 'sign-up page'),
+          text(' to create your account, then use the editor to build your first sacrament meeting program. You can also '),
+          link('https://app.wardprogram.com/demo/editor', 'try the editor demo'),
+          text(' to see how it works before signing up.')
+        ]
+      ],
       open: false
     },
     {
       question: "Why isn't it free?",
-      answer: "Ward Program requires servers, databases, and infrastructure that cost real money to run, and those costs grow with every ward that signs up. Rather than covering those expenses with ads, selling your data, or making your ward's information publicly searchable, Ward Program charges a straightforward <strong>$2.99 per month</strong>. That keeps the lights on, ensures your data stays completely private, and allows continued development of new features. It's a small cost that a single member, the bishopric, or the ward council can easily cover — and it means Ward Program answers to your ward, not to advertisers.",
+      answer: [
+        [
+          text(
+            "Ward Program requires servers, databases, and infrastructure that cost real money to run, and those costs grow with every ward that signs up. Rather than covering those expenses with ads, selling your data, or making your ward's information publicly searchable, Ward Program charges a straightforward "
+          ),
+          strong('$2.99 per month'),
+          text(
+            ". That keeps the lights on, ensures your data stays completely private, and allows continued development of new features. It's a small cost that a single member, the bishopric, or the ward council can easily cover — and it means Ward Program answers to your ward, not to advertisers."
+          )
+        ]
+      ],
       open: false
     }
   ];
@@ -421,8 +498,23 @@
                 <h3 class="m-0 text-base font-semibold text-blue-950 md:text-lg">{item.question}</h3>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 text-slate-400"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
-              <div class="px-5 pb-5 md:px-6 md:pb-6">
-                <p class="m-0 text-base leading-relaxed text-slate-600">{@html item.answer}</p>
+              <div class="space-y-3 px-5 pb-5 md:px-6 md:pb-6">
+                {#each item.answer as paragraph}
+                  <p class="m-0 text-base leading-relaxed text-slate-600">
+                    {#each paragraph as fragment}
+                      {#if fragment.type === 'strong'}
+                        <strong>{fragment.value}</strong>
+                      {:else if fragment.type === 'link'}
+                        <a
+                          href={fragment.href}
+                          class="font-medium text-teal-600 underline underline-offset-2 hover:text-teal-800"
+                        >{fragment.label}</a>
+                      {:else}
+                        {fragment.value}
+                      {/if}
+                    {/each}
+                  </p>
+                {/each}
               </div>
             </details>
           {/each}
