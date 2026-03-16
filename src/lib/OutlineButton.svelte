@@ -4,7 +4,8 @@
     rel = undefined,
     text,
     variant = 'outline',
-    size = 'md'
+    size = 'md',
+    onClick = undefined
   } = $props();
 
   const base = 'inline-flex items-center justify-center cursor-pointer font-medium no-underline transition-all duration-200 ease-in-out';
@@ -26,6 +27,7 @@
 <a
   {href}
   {rel}
+  onclick={onClick}
   class="{base} {sizes[size]} {variants[variant]}"
 >
   {text}

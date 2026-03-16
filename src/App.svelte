@@ -3,6 +3,23 @@
   import OutlineButton from './lib/OutlineButton.svelte';
   import FeatureCard from './lib/FeatureCard.svelte';
 
+  function trackCtaClick(name, location, destination) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const gtag = window['gtag'];
+    if (typeof gtag !== 'function') {
+      return;
+    }
+
+    gtag('event', 'mkt_cta_click', {
+      cta_name: name,
+      cta_location: location,
+      cta_destination: destination
+    });
+  }
+
   const iconShield = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`;
   const iconQr = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>`;
   const iconPhone = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`;
@@ -123,7 +140,12 @@
       </a>
       <div class="flex items-center gap-3">
         <a href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" class="hidden text-sm font-medium text-slate-600 no-underline transition-colors hover:text-blue-950 md:inline">View Demo</a>
-        <OutlineButton href="https://app.wardprogram.com/login" text="Admin Login" size="sm" />
+        <OutlineButton
+          href="https://app.wardprogram.com/login"
+          text="Admin Login"
+          size="sm"
+          onClick={() => trackCtaClick('admin_login', 'nav', 'https://app.wardprogram.com/login')}
+        />
       </div>
     </div>
   </nav>
@@ -140,8 +162,21 @@
         <h1 class="mb-6 text-4xl font-bold leading-tight tracking-tight text-blue-950 md:text-5xl lg:text-6xl">The private sacrament meeting program your ward deserves</h1>
         <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">Create, share, and manage your ward's weekly sacrament meeting program with complete privacy. No public listings. No app download required.</p>
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Start Free Trial - No Card Required" variant="primary" size="lg" />
-          <OutlineButton href="https://app.wardprogram.com/demo/program" rel="noopener noreferrer" text="View Program Demo" variant="outline" size="lg" />
+          <OutlineButton
+            href="https://app.wardprogram.com/sign-up"
+            text="Start Free Trial - No Card Required"
+            variant="primary"
+            size="lg"
+            onClick={() => trackCtaClick('start_free_trial', 'hero', 'https://app.wardprogram.com/sign-up')}
+          />
+          <OutlineButton
+            href="https://app.wardprogram.com/demo/program"
+            rel="noopener noreferrer"
+            text="View Program Demo"
+            variant="outline"
+            size="lg"
+            onClick={() => trackCtaClick('view_program_demo', 'hero', 'https://app.wardprogram.com/demo/program')}
+          />
         </div>
         <p class="mt-4 text-sm font-medium text-teal-700">No credit card required for your free 30-day trial.</p>
       </div>
@@ -353,8 +388,21 @@
         <p class="mx-auto mb-8 max-w-xl text-lg text-blue-200">Join 50+ wards using a private, simple way to share each sacrament meeting program.</p>
         <p class="mt-2 mb-12 text-center text-sm text-blue-200">Free 30-day trial with no credit card required. Then $2.99/month to continue.</p>
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-          <OutlineButton href="https://app.wardprogram.com/sign-up" text="Start Free Trial - No Card Required" variant="primary" size="lg" />
-          <OutlineButton href="https://app.wardprogram.com/demo/editor" rel="noopener noreferrer" text="See Editor Demo" variant="outline-white" size="lg" />
+          <OutlineButton
+            href="https://app.wardprogram.com/sign-up"
+            text="Start Free Trial - No Card Required"
+            variant="primary"
+            size="lg"
+            onClick={() => trackCtaClick('start_free_trial', 'bottom_cta', 'https://app.wardprogram.com/sign-up')}
+          />
+          <OutlineButton
+            href="https://app.wardprogram.com/demo/editor"
+            rel="noopener noreferrer"
+            text="See Editor Demo"
+            variant="outline-white"
+            size="lg"
+            onClick={() => trackCtaClick('see_editor_demo', 'bottom_cta', 'https://app.wardprogram.com/demo/editor')}
+          />
         </div>
       </div>
     </section>
