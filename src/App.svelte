@@ -1,7 +1,12 @@
 <script>
+  import { onMount } from 'svelte';
   import logo from './assets/book-open-svgrepo-com.svg';
   import OutlineButton from './lib/OutlineButton.svelte';
   import FeatureCard from './lib/FeatureCard.svelte';
+
+  onMount(() => {
+    document.dispatchEvent(new Event('app-ready'));
+  });
 
   function trackCtaClick(name, location, destination) {
     if (typeof window === 'undefined') {

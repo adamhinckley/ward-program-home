@@ -14,7 +14,7 @@ export default defineConfig({
           routes: ["/"],
           renderer: new JSDOMRenderer(),
           rendererOptions: {
-            renderAfterTime: 2000,
+            renderAfterDocumentEvent: "app-ready",
           },
         }),
       ],
