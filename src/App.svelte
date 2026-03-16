@@ -20,9 +20,7 @@
     });
   }
 
-  const iconShield = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`;
-  const iconQr = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>`;
-  const iconPhone = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`;
+
 
   /** @typedef {{ type: 'text', value: string }} TextFragment */
   /** @typedef {{ type: 'strong', value: string }} StrongFragment */
@@ -288,20 +286,29 @@
         </div>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           <FeatureCard
-            icon={iconShield}
             title="Private and secure"
             body="Your congregation information is not publicly listed or searchable by default. Share access with your private link and QR code."
-          />
+          >
+            {#snippet icon()}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            {/snippet}
+          </FeatureCard>
           <FeatureCard
-            icon={iconQr}
             title="QR code sharing"
             body="Generate a custom QR code for your church building. Members scan and view — no account, no app download, no friction."
-          />
+          >
+            {#snippet icon()}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>
+            {/snippet}
+          </FeatureCard>
           <FeatureCard
-            icon={iconPhone}
             title="Works on any phone"
             body="Members get instant access in any mobile browser. They can save it to their home screen for each Sunday."
-          />
+          >
+            {#snippet icon()}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            {/snippet}
+          </FeatureCard>
         </div>
       </div>
     </section>
