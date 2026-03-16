@@ -27,7 +27,7 @@
 <a
   {href}
   {rel}
-  onclick={onClick}
+  onclick={onClick ?? undefined}
   class="{base} {sizes[size]} {variants[variant]}"
 >
   {text}
