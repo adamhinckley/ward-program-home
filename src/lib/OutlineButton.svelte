@@ -22,13 +22,16 @@
     'outline-white': 'bg-transparent text-white border-2 border-white/30 hover:bg-white/10 hover:border-white/60',
     ghost: 'bg-transparent text-blue-900 border-2 border-transparent hover:bg-blue-50'
   };
+
+  const sizeClass = $derived(sizes[size] ?? sizes['md']);
+  const variantClass = $derived(variants[variant] ?? variants['outline']);
 </script>
 
 <a
   {href}
   {rel}
   onclick={onClick ?? undefined}
-  class="{base} {sizes[size]} {variants[variant]}"
+  class="{base} {sizeClass} {variantClass}"
 >
   {text}
 </a>
