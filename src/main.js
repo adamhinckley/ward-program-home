@@ -1,9 +1,16 @@
-import { mount } from 'svelte'
-import './app.css'
-import App from './App.svelte'
+import './app.css';
+import { enhance } from './lib/enhance.js';
 
-const app = mount(App, {
-  target: document.getElementById('app'),
-})
+const target = document.getElementById('app');
 
-export default app
+// Production pages are rendered to HTML at build time, and the only behavior they need is
+// in enhance(), so browsers don't download Svelte at all. In `npm run dev` nothing is
+// prerendered, so render the page in the browser instead.
+if (target && !target.firstElementChild) {
+  import('./mount.js').then(({ mountApp }) => {
+    mountApp(target);
+    enhance();
+  });
+} else {
+  enhance();
+}
