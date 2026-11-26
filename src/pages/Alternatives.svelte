@@ -3,7 +3,7 @@
   import ComparisonTable from '../lib/ComparisonTable.svelte';
   import CtaBand from '../lib/CtaBand.svelte';
   import Seo from '../lib/Seo.svelte';
-  import { breadcrumbs, organization, webApplication, webPage, website } from '../lib/schema.js';
+  import { crumbsFor, organization, webApplication, webPage, website } from '../lib/schema.js';
   import { PRICE } from '../content/site.js';
 
   /** @type {{ meta: import('./meta.js').PageMeta }} */
@@ -14,7 +14,7 @@
   title={meta.title}
   description={meta.description}
   path={meta.path}
-  schema={[organization, website, webApplication, webPage(meta), breadcrumbs([{ name: 'Home', path: '/' }, { name: meta.crumb, path: meta.path }])]}
+  schema={[organization, website, webApplication, webPage(meta), crumbsFor(meta)]}
 />
 
 <PageHeader
@@ -43,14 +43,14 @@
   <p><strong>Choose Ward Program instead if</strong> you want a program that isn't listed publicly.</p>
 
   <h2>Canva</h2>
-  <p>Canva is a general design tool. It can produce a beautiful printed or PDF program and can add a QR code, but it isn't built for weekly programs: someone edits the design each week and shares the new file, so there's no single link or chapel QR code that always shows the current week.</p>
+  <p>Canva is a general design tool. It can produce a beautiful printed program and can add a QR code, but it isn't built for weekly programs or for reading on a phone: someone redesigns the layout each week, and exported PDFs have to be re-shared every Sunday. Privacy depends on how you share the design.</p>
 
   <h2>Google Docs</h2>
   <p>A shared Google Doc is free and familiar. Privacy depends on your sharing settings, and "anyone with the link" documents can end up indexed or forwarded. Docs aren't designed for reading on phones and don't come with a chapel QR code.</p>
 
   <h2>Ward Program</h2>
   <p>Ward Program is built only for sacrament meeting programs. One editor (or several) updates the program in the browser, members scan a QR code in the chapel or tap a private link, and the page always shows the current week. There is no public directory, program pages are kept out of search engines, and members need no app or login.</p>
-  <p>It costs {PRICE.display} per {PRICE.period} per ward after a {PRICE.trialDays}-day free trial, with no credit card required to start. Viewing is free. See <a href="/pricing">pricing</a> and <a href="/private-ward-program">how privacy works</a>.</p>
+  <p>It costs {PRICE.display} per {PRICE.period} per ward after a {PRICE.trialDays}-day free trial, with no credit card required to start. One subscription covers every editor, and members never pay. See <a href="/pricing">pricing</a> and <a href="/private-ward-program">how privacy works</a>.</p>
 
   <h2>Which should you choose?</h2>
   <ul>
@@ -60,4 +60,4 @@
   </ul>
 </article>
 
-<CtaBand location="alternatives_cta" heading="Try the private option free for 30 days" />
+<CtaBand location="alternatives_cta" heading={`Try the private option free for ${PRICE.trialDays} days`} />

@@ -34,19 +34,31 @@ export const TAGLINE = 'Private weekly sacrament meeting programs for wards of T
 export const SUMMARY =
   `${BRAND} is a web app for creating and sharing a ward's weekly sacrament meeting program privately. ` +
   `A ward clerk, executive secretary, or bishopric member edits the program in the browser, and members open it by scanning a QR code in the chapel or tapping a private link. ` +
-  `Programs are not listed in any public directory or search engine, members need no app or login, and editing costs ${PRICE.display} per ${PRICE.period} for the whole ward after a ${PRICE.trialDays}-day free trial with no credit card required. ` +
+  `Programs are not listed in any public directory or search engine, and members need no app, account, or login. ` +
+  `The ward pays ${PRICE.display} per ${PRICE.period} (one subscription for the whole ward, never per member) after a ${PRICE.trialDays}-day free trial with no credit card required. ` +
   `${BRAND} is made by ${CREATOR.name} and is not an official product of The Church of Jesus Christ of Latter-day Saints.`;
 
 export const KEY_FACTS = [
-  `Price: ${PRICE.display} per ${PRICE.period} per ward, for editing and publishing. One subscription covers the whole ward.`,
+  `Price: ${PRICE.display} per ${PRICE.period} per ward. One subscription covers the whole ward and every editor; members never pay.`,
   `Free trial: ${PRICE.trialDays} days, no credit card required.`,
-  'Viewing is free for members and visitors, with no account, login, or app download.',
+  'Members and visitors view the program with no account, login, or app download.',
+  "The ward's trial or subscription keeps its program online. If the subscription lapses, the program page shows as unavailable until billing is restored.",
   'Sharing: a printable QR code for the chapel plus a private link. Each program lives at an unguessable address.',
   'Privacy: programs are never listed in a public directory, and every program page tells search engines not to index it.',
-  'Editing: hymns, prayers, speakers, musical numbers, announcements, and ward contacts. Changes appear for members as soon as they are saved.',
+  'Editing: drag-and-drop sections for the date, callings and names, hymns (number, title, link), musical numbers, images, announcements, and ward contacts. Changes appear for members as soon as they are saved.',
   'Multiple editors: invite other ward leaders to help edit under the same subscription.',
   'Setup takes about 3 to 5 minutes.',
   `Made by ${CREATOR.name} (${CREATOR.url}). Not an official website or product of The Church of Jesus Christ of Latter-day Saints.`
+];
+
+/** How privacy works: [lead-in, detail]. Shown on /private-ward-program and in llms.txt. */
+export const PRIVACY_POINTS = [
+  ['No public directory', 'There is no "find your ward" search. Nobody can browse or look up wards on Ward Program.'],
+  ['Unguessable links', "Each ward's program lives at an address built from a long random ID, not the ward's name, so it can't be guessed."],
+  ['Kept out of search engines', "Every program page tells search engines not to index it, and the program site's robots.txt asks all crawlers to stay out."],
+  ['Encrypted in transit', 'All traffic uses HTTPS.'],
+  ['Only invited editors', "Editing requires an account, and new editors join by invitation from your ward's account."],
+  ['Not password-protected', 'Anyone who has the link or scans the QR code can read the program, like a paper program in the chapel. Leave out anything you would not print.']
 ];
 
 export const NAV_LINKS = [

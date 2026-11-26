@@ -5,7 +5,7 @@
   import Faq from '../lib/Faq.svelte';
   import CtaBand from '../lib/CtaBand.svelte';
   import Seo from '../lib/Seo.svelte';
-  import { faqPage, organization, webApplication, webPage, website } from '../lib/schema.js';
+  import { organization, webApplication, webPage, website } from '../lib/schema.js';
   import { homeFaq } from '../content/faq.js';
   import { LINKS, PRICE } from '../content/site.js';
 
@@ -13,12 +13,12 @@
   let { meta } = $props();
 
   const programFeatures = [
-    'Presiding, conducting, music leader, and accompanist',
-    'Hymns with numbers, titles, and links, plus prayers, speakers, and musical numbers',
-    'Fast and testimony meeting and baby blessing options',
+    'Your ward name, the date, and an optional image',
+    'Callings paired with names: presiding, conducting, prayers, speakers, and more',
+    'Hymns with numbers, titles, and links, plus musical numbers with performers',
     'Ward announcements',
     'Ward contacts for the bishopric, clerks, and organization leaders',
-    'Drag-and-drop layout to arrange each section',
+    'Drag-and-drop sections you can rearrange for fast Sundays and special meetings',
     'Invite other ward leaders to help edit'
   ];
 </script>
@@ -27,14 +27,14 @@
   title={meta.title}
   description={meta.description}
   path={meta.path}
-  schema={[organization, website, webApplication, webPage(meta), faqPage(homeFaq)]}
+  schema={[organization, website, webApplication, webPage(meta, { faq: homeFaq })]}
 />
 
 <!-- ── Hero ── -->
 <section class="px-4 pb-16 pt-16 md:px-8 md:pb-20 md:pt-20 lg:pb-24 lg:pt-24">
   <div class="mx-auto max-w-3xl text-center">
-    <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-warm-line bg-warm px-4 py-1.5 text-sm font-medium text-brass-ink">
-      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-warm-line bg-warm px-4 py-1.5 text-sm font-medium text-ink">
+      <svg aria-hidden="true" class="text-brass-ink" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
       Trusted by 50+ wards
     </p>
     <h1 class="mb-6 text-4xl font-bold leading-tight tracking-tight text-ink md:text-5xl lg:text-6xl">The private sacrament meeting program your ward deserves</h1>

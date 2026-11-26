@@ -41,6 +41,13 @@
         />
       </div>
     </nav>
+    <!-- Phones: the same links in a second row, so every page is reachable without a menu script. -->
+    <ul class="m-0 flex list-none justify-center gap-x-6 border-t border-line-soft px-4 py-2 text-sm md:hidden">
+      {#each NAV_LINKS as navLink (navLink.href)}
+        <li><a href={navLink.href} class="font-medium text-muted no-underline hover:text-ink">{navLink.label}</a></li>
+      {/each}
+      <li><a href={LINKS.programDemo} data-cta="view_program_demo" data-cta-location="nav_mobile" class="font-medium text-muted no-underline hover:text-ink">Demo</a></li>
+    </ul>
   </header>
 
   <main id="main" class="flex w-full flex-col text-ink">
@@ -56,7 +63,7 @@
         {/each}
       </ul>
     </nav>
-    <p class="m-0">{BRAND}. All rights reserved. <a href={CREATOR.url} target="_blank" rel="noopener" class="text-muted underline decoration-line underline-offset-2 transition-colors hover:text-link">&copy; <span data-current-year>{year}</span> {CREATOR.name}<span class="sr-only"> (opens in a new tab)</span></a></p>
+    <p class="m-0">{BRAND}. All rights reserved. <a href={CREATOR.url} target="_blank" rel="noopener" class="text-muted underline decoration-faint underline-offset-2 transition-colors hover:text-link">&copy; <span data-current-year>{year}</span> {CREATOR.name}{' '}<span class="sr-only">(opens in a new tab)</span></a></p>
     <p class="m-0 mt-1">Not an official website of <span class="italic">The Church of Jesus Christ of Latter-day Saints</span>.</p>
   </footer>
 </div>

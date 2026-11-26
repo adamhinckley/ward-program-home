@@ -16,7 +16,24 @@ export const strong = (value) => ({ type: 'strong', value });
 export const link = (href, label) => ({ type: 'link', href, label });
 
 /**
- * Plain-text version of an answer, for JSON-LD and llms.txt.
+ * Markdown version of an answer for llms.txt, keeping links (relative ones made absolute).
+ * @param {FaqFragment[][]} answer
+ * @param {(href: string) => string} absolute
+ */
+export function answerToMarkdown(answer, absolute) {
+  return answer
+    .map((paragraph) =>
+      paragraph
+        .map((fragment) =>
+          fragment.type === 'link' ? `[${fragment.label}](${absolute(fragment.href)})` : fragment.value
+        )
+        .join('')
+    )
+    .join('\n\n');
+}
+
+/**
+ * Plain-text version of an answer, for JSON-LD.
  * @param {FaqFragment[][]} answer
  */
 export function answerToText(answer) {
@@ -34,7 +51,7 @@ export const homeFaq = [
     answer: [
       [
         text(
-          'Ward Program is a privacy-first web app for creating and sharing the weekly sacrament meeting program for a ward of The Church of Jesus Christ of Latter-day Saints. Members open the program by scanning a QR code or tapping a private link, and none of your congregation data is ever listed publicly.'
+          'Ward Program is a privacy-first web app for creating and sharing the weekly sacrament meeting program (sometimes called a ward bulletin) for wards and branches of The Church of Jesus Christ of Latter-day Saints. A bishopric member, ward clerk, or executive secretary edits it in the browser, and members open it by scanning a QR code or tapping a private link. None of your congregation data is ever listed publicly.'
         )
       ]
     ],
@@ -59,7 +76,7 @@ export const homeFaq = [
     answer: [
       [
         text(
-          `Ward Program is free for ward members to view. Editing and publishing access for the ward costs ${PRICE.display} per ${PRICE.period}, after a ${PRICE.trialDays}-day free trial with no credit card required. This includes unlimited program editing, QR code generation, and private sharing. There are no hidden fees, no per-member charges, and no upsells. `
+          `Ward Program costs ${PRICE.display} per ${PRICE.period} per ward, after a ${PRICE.trialDays}-day free trial with no credit card required. Members never pay: they view the program for free with no login. The subscription includes unlimited program editing, QR code generation, private sharing, and any number of editors. There are no hidden fees, no per-member charges, and no upsells. `
         ),
         link('/pricing', 'See pricing details'),
         text('.')
@@ -71,7 +88,7 @@ export const homeFaq = [
     answer: [
       [
         text(
-          `Yes. Many wards do exactly that. Editing and publishing access is ${PRICE.display} per ${PRICE.period} for the ward, while everyone can view the program for free with no login required. One person can sponsor it for the entire ward. Once you create the account, you can invite others to help edit, and only one paid subscription is needed.`
+          `Yes. Many wards do exactly that. One subscription at ${PRICE.display} per ${PRICE.period} covers the whole ward, and members view the program for free with no login. Once you create the account, you can invite others to help edit, and only one paid subscription is needed.`
         )
       ]
     ]
@@ -123,5 +140,33 @@ export const homeFaq = [
         )
       ]
     ]
+  }
+];
+
+/** @type {FaqItem[]} */
+export const pricingFaq = [
+  {
+    question: 'Is there a free trial of Ward Program?',
+    answer: [[text(`Yes. Every ward gets a ${PRICE.trialDays}-day free trial with no credit card required. If you decide not to continue, there's nothing to cancel: the program simply goes offline when the trial ends.`)]]
+  },
+  {
+    question: 'Do members have to pay to see the program?',
+    answer: [[text("No. Members and visitors never pay. They scan the QR code or open the link in their browser, with no account, login, or app. The ward's subscription is what keeps the program online.")]]
+  },
+  {
+    question: 'What happens if the subscription lapses?',
+    answer: [[text("The program page shows a message that it's currently unavailable, and members are asked to contact their ward. Your program and settings are kept, and it comes back as soon as billing is restored.")]]
+  },
+  {
+    question: 'Is the Ward Program price per editor or per ward?',
+    answer: [[text(`Per ward. One subscription at ${PRICE.display} per ${PRICE.period} covers the ward, and the person who creates the account can invite other leaders to help edit at no extra cost.`)]]
+  },
+  {
+    question: 'Who usually pays for Ward Program?',
+    answer: [[text('Often a single member sponsors it for the ward, or a member of the bishopric or ward council covers it. The person who signs up manages billing and can invite the ward clerk, executive secretary, or others to edit.')]]
+  },
+  {
+    question: 'How do I start using Ward Program?',
+    answer: [[text('Create an account on the '), link(LINKS.signUp, 'sign-up page'), text('. Setup usually takes 3 to 5 minutes. You can also '), link(LINKS.editorDemo, 'try the editor demo'), text(' first.')]]
   }
 ];

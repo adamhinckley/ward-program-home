@@ -2,8 +2,8 @@
   import Mark from './Mark.svelte';
   import { comparisonRows } from '../content/comparison.js';
 
-  /** @type {{ headingLevel?: 'h3' | 'h4', caption?: string }} */
-  let { headingLevel = 'h3', caption = 'Comparison of sacrament meeting program tools' } = $props();
+  /** @type {{ caption?: string }} */
+  let { caption = 'Comparison of sacrament meeting program tools' } = $props();
 </script>
 
 <!-- Mobile: Comparison cards -->
@@ -11,13 +11,13 @@
   {#each comparisonRows as row (row.name)}
     <article class={`rounded-xl border p-5 ${row.featured ? 'border-navy-strong/40 bg-accent shadow-sm ring-1 ring-navy-strong/15' : 'border-line bg-white'}`}>
       <div class="mb-4 flex items-center gap-2.5">
-        <svelte:element this={headingLevel} class={`m-0 text-base ${row.featured ? 'font-bold text-ink' : 'font-medium text-ink'}`}>
+        <p class={`m-0 text-base ${row.featured ? 'font-bold text-ink' : 'font-medium text-ink'}`}>
           {#if row.link}
             <a href={row.link} rel="noopener nofollow" class="text-ink underline decoration-line underline-offset-2 transition-colors hover:text-link">{row.name}</a>
           {:else}
             {row.name}
           {/if}
-        </svelte:element>
+        </p>
         {#if row.featured}
           <span class="rounded-full bg-navy-strong px-2.5 py-0.5 text-xs font-semibold text-white">Recommended</span>
         {/if}

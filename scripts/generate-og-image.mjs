@@ -1,6 +1,7 @@
 // Generates public/og-image.png (1200x630), the share card for every page.
 // Run with `npm run og` and commit the PNG. Colors match the Navy palette used by the site and app.
 import sharp from "sharp";
+import { PRICE } from "../src/content/site.js";
 
 const NAVY = "#14213a";
 const INK = "#172033";
@@ -56,7 +57,7 @@ const svg = `
     ${pill(290, "phone", "No app required")}
   </g>
 
-  <text x="600" y="574" text-anchor="middle" font-family="${FONT}" font-size="22" font-weight="500" fill="${NAVY}">$2.99/month per ward  ·  30-day free trial  ·  www.wardprogram.com</text>
+  <text x="600" y="574" text-anchor="middle" font-family="${FONT}" font-size="22" font-weight="500" fill="${NAVY}">${PRICE.display}/month per ward  ·  ${PRICE.trialDays}-day free trial  ·  www.wardprogram.com</text>
 </svg>`;
 
 await sharp(Buffer.from(svg)).png().toFile("public/og-image.png");

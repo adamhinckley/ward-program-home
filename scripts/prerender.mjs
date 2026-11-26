@@ -12,8 +12,9 @@ const dist = path.join(root, 'dist');
 const ssrDir = path.join(root, '.ssr');
 
 const server = await import(pathToFileURL(path.join(ssrDir, 'entry-server.js')).href);
-const { routes, indexablePages, homeFaq, answerToText, comparisonRows } = server;
-const { SITE_URL, BRAND, CREATOR, SUMMARY, KEY_FACTS, LINKS, TAGLINE } = server;
+const { routes, indexablePages, comparisonRows } = server;
+const { homeFaq, pricingFaq, guideFaq, answerToMarkdown, meetingOrder, HANDBOOK_URL } = server;
+const { SITE_URL, BRAND, CREATOR, SUMMARY, KEY_FACTS, LINKS, TAGLINE, PRIVACY_POINTS } = server;
 
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 for (const marker of ['<!--app-head-->', '<!--app-html-->']) {
@@ -22,7 +23,8 @@ for (const marker of ['<!--app-head-->', '<!--app-html-->']) {
   }
 }
 
-const absolute = (/** @type {string} */ p) => (p === '/' ? `${SITE_URL}/` : `${SITE_URL}${p}`);
+const absolute = (/** @type {string} */ p) => (p.startsWith('http') ? p : p === '/' ? `${SITE_URL}/` : `${SITE_URL}${p}`);
+const faqSection = (items) => items.flatMap((item) => [`### ${item.question}`, '', answerToMarkdown(item.answer, absolute), '']);
 
 /** Fail the build if a page would ship without the basics crawlers rely on. */
 function check(file, html, { indexable }) {
@@ -90,12 +92,28 @@ const llms = [
   '',
   ...comparisonRows.map(
     (row) =>
-      `- ${row.name}: ${yesNo(row.isPrivate, 'not publicly listed', 'publicly searchable')}; QR code ${yesNo(row.hasQr, 'yes', 'no')}; app download ${yesNo(row.noApp, 'not needed', 'required')}; cost: ${row.cost} ${row.notes}`
+      `- ${row.name}: ${yesNo(row.isPrivate, 'not publicly listed', 'publicly searchable')}; QR code: ${yesNo(row.hasQr, 'yes', 'no')}; app download: ${yesNo(row.noApp, 'not needed', 'required')}; cost: ${row.cost.replace(/\.$/, '')}. ${row.notes}`
   ),
+  '',
+  '## Privacy',
+  '',
+  ...PRIVACY_POINTS.map(([lead, detail]) => `- ${lead}: ${detail}`),
   '',
   '## Frequently asked questions',
   '',
-  ...homeFaq.flatMap((item) => [`### ${item.question}`, '', answerToText(item.answer), '']),
+  ...faqSection(homeFaq),
+  '## Pricing questions',
+  '',
+  ...faqSection(pricingFaq),
+  '## The usual order of sacrament meeting',
+  '',
+  `Most wards follow this order, which reflects chapter 29 of the General Handbook (${HANDBOOK_URL}). The bishopric decides the details.`,
+  '',
+  ...meetingOrder.map(([step, detail], i) => `${i + 1}. ${step}: ${detail}`),
+  '',
+  '## Sacrament meeting program questions',
+  '',
+  ...faqSection(guideFaq),
   '## About',
   '',
   `${BRAND} is made by ${CREATOR.name} (${CREATOR.url}). It is not an official website or product of The Church of Jesus Christ of Latter-day Saints.`,

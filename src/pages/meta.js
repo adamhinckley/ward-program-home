@@ -1,3 +1,5 @@
+import { PRICE } from '../content/site.js';
+
 // Page metadata, kept apart from the components so the build scripts (sitemap, llms.txt)
 // can read it without loading Svelte.
 // `updated` is the date the page's content last changed in a meaningful way: it feeds the
@@ -20,16 +22,16 @@ export const pages = {
     path: '/',
     title: 'Ward Program — Private Sacrament Meeting Programs for LDS Wards',
     description:
-      "Private weekly sacrament meeting programs for Latter-day Saint wards. No public listing, no app download, QR code sharing. $2.99/month per ward, 30-day free trial.",
+      `Private weekly sacrament meeting programs for Latter-day Saint wards. No public listing, no app download, QR code sharing. ${PRICE.display}/month per ward, ${PRICE.trialDays}-day free trial.`,
     crumb: 'Home',
     updated: '2026-11-25',
     llmsSummary: 'What Ward Program is, features, comparison table, and FAQ.'
   },
   pricing: {
     path: '/pricing',
-    title: 'Ward Program Pricing — $2.99/month per Ward',
+    title: `Ward Program Pricing — ${PRICE.display}/month per Ward`,
     description:
-      'Ward Program costs $2.99/month per ward after a 30-day free trial, no credit card needed. Members view free with no login, and one plan covers every editor.',
+      `Ward Program costs ${PRICE.display}/month per ward after a ${PRICE.trialDays}-day free trial, no credit card needed. Members view free with no login, and one plan covers every editor.`,
     crumb: 'Pricing',
     updated: '2026-11-25',
     llmsSummary: 'Price, free trial, who pays, multiple editors, and what is included.'

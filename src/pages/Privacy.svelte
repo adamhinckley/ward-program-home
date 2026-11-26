@@ -2,7 +2,8 @@
   import PageHeader from '../lib/PageHeader.svelte';
   import CtaBand from '../lib/CtaBand.svelte';
   import Seo from '../lib/Seo.svelte';
-  import { breadcrumbs, organization, webApplication, webPage, website } from '../lib/schema.js';
+  import { crumbsFor, organization, webApplication, webPage, website } from '../lib/schema.js';
+  import { PRICE, PRIVACY_POINTS } from '../content/site.js';
 
   /** @type {{ meta: import('./meta.js').PageMeta }} */
   let { meta } = $props();
@@ -12,7 +13,7 @@
   title={meta.title}
   description={meta.description}
   path={meta.path}
-  schema={[organization, website, webApplication, webPage(meta), breadcrumbs([{ name: 'Home', path: '/' }, { name: meta.crumb, path: meta.path }])]}
+  schema={[organization, website, webApplication, webPage(meta), crumbsFor(meta)]}
 />
 
 <PageHeader
@@ -25,11 +26,9 @@
 <article class="article mx-auto w-full max-w-3xl px-4 py-12 md:px-8 md:py-16">
   <h2 class="mt-0!">The short version</h2>
   <ul>
-    <li><strong>No public directory.</strong> There is no "find your ward" search. Nobody can browse or look up wards on Ward Program.</li>
-    <li><strong>Unguessable links.</strong> Each ward's program lives at an address built from a long random ID, not the ward's name, so it can't be guessed.</li>
-    <li><strong>Kept out of search engines.</strong> Every program page tells search engines not to index it, and the program site's robots.txt asks all crawlers to stay out.</li>
-    <li><strong>Encrypted in transit.</strong> All traffic uses HTTPS.</li>
-    <li><strong>Only invited editors.</strong> Editing requires an account, and new editors join by invitation from your ward's account.</li>
+    {#each PRIVACY_POINTS.slice(0, 5) as [lead, detail] (lead)}
+      <li><strong>{lead}.</strong> {detail}</li>
+    {/each}
   </ul>
 
   <h2>Why public directories are a problem for wards</h2>
@@ -46,7 +45,7 @@
   </ul>
 
   <h2>Who runs Ward Program</h2>
-  <p>Ward Program is made by <a href="https://pullclear.com" rel="noopener">Pull Clear Software</a>. It is paid for by the wards that use it, at $2.99 per month per ward, so it doesn't rely on ads or on attracting traffic to ward pages. It is not an official website or product of The Church of Jesus Christ of Latter-day Saints.</p>
+  <p>Ward Program is made by <a href="https://pullclear.com" rel="noopener">Pull Clear Software</a>. It is paid for by the wards that use it, at {PRICE.display} per {PRICE.period} per ward, so it doesn't rely on ads or on attracting traffic to ward pages. It is not an official website or product of The Church of Jesus Christ of Latter-day Saints.</p>
   <p>See <a href="/pricing">pricing</a> or <a href="/ward-bulletin-alternatives">how Ward Program compares to other bulletin tools</a>.</p>
 </article>
 

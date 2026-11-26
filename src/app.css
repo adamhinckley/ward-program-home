@@ -86,6 +86,10 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-navy-strong;
   }
+  /* On navy panels the navy ring disappears; use the app's dark-mode focus color. */
+  .bg-navy :focus-visible {
+    outline-color: #8fb0ee;
+  }
 
   /* FAQ chevron animation */
   details summary {

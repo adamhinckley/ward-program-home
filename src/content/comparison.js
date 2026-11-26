@@ -30,7 +30,7 @@ export const comparisonRows = [
     isPrivate: true,
     hasQr: true,
     noApp: true,
-    cost: `Free for members to view. ${PRICE.display}/mo for editing, after a ${PRICE.trialDays}-day free trial.`,
+    cost: `${PRICE.display}/mo per ward after a ${PRICE.trialDays}-day free trial. Members view free.`,
     notes: 'Private link and built-in QR code. Not listed in any directory or search engine.',
     featured: true
   },
@@ -61,7 +61,7 @@ export const comparisonRows = [
     hasQr: true,
     noApp: true,
     cost: 'Free, paid plans available',
-    notes: 'General design tool. You rebuild and re-share the design each week, and a QR code points to one file, not the current week.',
+    notes: 'General design tool, not built for phones or weekly programs. Exported PDFs must be re-shared each week.',
     featured: false
   },
   {

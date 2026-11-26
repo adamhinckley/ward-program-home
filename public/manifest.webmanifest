@@ -4,7 +4,7 @@
   "description": "Create and share your ward's weekly sacrament meeting program privately. QR code sharing, easy editing, and privacy-first design for wards of The Church of Jesus Christ of Latter-day Saints.",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#f8fafc",
+  "background_color": "#ffffff",
   "theme_color": "#14213a",
   "categories": ["utilities", "productivity"],
   "icons": [

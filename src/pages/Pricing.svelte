@@ -3,8 +3,8 @@
   import CtaBand from '../lib/CtaBand.svelte';
   import Faq from '../lib/Faq.svelte';
   import Seo from '../lib/Seo.svelte';
-  import { breadcrumbs, faqPage, organization, webApplication, webPage, website } from '../lib/schema.js';
-  import { text, link } from '../content/faq.js';
+  import { crumbsFor, organization, webApplication, webPage, website } from '../lib/schema.js';
+  import { pricingFaq } from '../content/faq.js';
   import { LINKS, PRICE } from '../content/site.js';
 
   /** @type {{ meta: import('./meta.js').PageMeta }} */
@@ -14,46 +14,23 @@
     'Unlimited weekly programs and edits',
     'A printable QR code for your chapel',
     'A private link members can open in any phone browser',
-    'Hymns, prayers, speakers, musical numbers, announcements, and ward contacts',
+    'Drag-and-drop sections for callings, hymns, musical numbers, announcements, and ward contacts',
     'Invite other ward leaders to help edit',
-    'Free viewing for every member and visitor, with no login'
+    'Members and visitors view for free, with no login'
   ];
 
-  /** @type {import('../content/faq.js').FaqItem[]} */
-  const pricingFaq = [
-    {
-      question: 'Is there a free trial?',
-      answer: [[text(`Yes. Every ward gets a ${PRICE.trialDays}-day free trial with no credit card required. If you decide not to continue, you don't need to cancel anything.`)]]
-    },
-    {
-      question: 'Do members have to pay to see the program?',
-      answer: [[text('No. Viewing is always free. Members and visitors scan the QR code or open the link in their browser, with no account, login, or app.')]]
-    },
-    {
-      question: 'Is the price per editor or per ward?',
-      answer: [[text(`Per ward. One subscription at ${PRICE.display} per ${PRICE.period} covers the ward, and the person who creates the account can invite other leaders to help edit at no extra cost.`)]]
-    },
-    {
-      question: 'Who usually pays for it?',
-      answer: [[text('Often a single member sponsors it for the ward, or a member of the bishopric or ward council covers it. The person who signs up manages billing and can invite the ward clerk, executive secretary, or others to edit.')]]
-    },
-    {
-      question: 'How do I start?',
-      answer: [[text('Create an account on the '), link(LINKS.signUp, 'sign-up page'), text('. Setup usually takes 3 to 5 minutes. You can also '), link(LINKS.editorDemo, 'try the editor demo'), text(' first.')]]
-    }
-  ];
 </script>
 
 <Seo
   title={meta.title}
   description={meta.description}
   path={meta.path}
-  schema={[organization, website, webApplication, webPage(meta), breadcrumbs([{ name: 'Home', path: '/' }, { name: meta.crumb, path: meta.path }]), faqPage(pricingFaq)]}
+  schema={[organization, website, webApplication, webPage(meta, { faq: pricingFaq }), crumbsFor(meta)]}
 />
 
 <PageHeader
   title="Simple pricing for your whole ward"
-  intro={`Ward Program costs ${PRICE.display} per ${PRICE.period} per ward for editing and publishing, after a ${PRICE.trialDays}-day free trial with no credit card required. Members view the program for free.`}
+  intro={`Ward Program costs ${PRICE.display} per ${PRICE.period} per ward, after a ${PRICE.trialDays}-day free trial with no credit card required. One subscription covers every editor, and members never pay.`}
   crumb={meta.crumb}
   updated={meta.updated}
 />
@@ -66,7 +43,7 @@
         <span class="text-5xl font-bold tracking-tight text-ink">{PRICE.display}</span>
         <span class="text-lg text-muted">per {PRICE.period}</span>
       </p>
-      <p class="m-0 text-sm text-muted">Per ward, not per person. {PRICE.trialDays}-day free trial, no credit card required.</p>
+      <p class="m-0 text-sm text-muted">Per ward, not per person. {PRICE.trialDays}-day free trial, no credit card required. The subscription keeps your program online.</p>
       <ul class="mt-6 mb-8 space-y-3 p-0">
         {#each included as item (item)}
           <li class="flex list-none items-start gap-3 text-ink-soft">
@@ -93,4 +70,4 @@
   </div>
 </section>
 
-<CtaBand location="pricing_cta" heading="Try it free for 30 days" />
+<CtaBand location="pricing_cta" heading={`Try it free for ${PRICE.trialDays} days`} />
