@@ -14,7 +14,8 @@
     'Unlimited weekly programs and edits',
     'A printable QR code for your chapel',
     'A private link members can open in any phone browser',
-    'Drag-and-drop sections for callings, hymns, musical numbers, announcements, and ward contacts',
+    'Drag-and-drop sections for callings, hymns, musical numbers, and images',
+    'Announcements and ward contacts pages',
     'Invite other ward leaders to help edit',
     'Members and visitors view for free, with no login'
   ];

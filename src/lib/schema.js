@@ -62,7 +62,8 @@ export const webApplication = {
     'Private weekly sacrament meeting programs, never listed in a public directory',
     'Printable QR code for the chapel',
     'No app download or login for members; works in any mobile browser',
-    'Browser-based editor with drag-and-drop sections for callings and names, hymns, musical numbers, images, announcements, and ward contacts',
+    'Browser-based editor with drag-and-drop sections for callings and names, hymns, musical numbers, and images',
+    'Separate announcements and ward contacts pages for members',
     'Invite other ward leaders to help edit'
   ]
 };
@@ -98,8 +99,8 @@ export function webPage({ path, title, description, crumbs = path !== '/' }, { f
   };
 }
 
-/** @param {{ path: string, title: string, description: string, updated: string }} page */
-export function article({ path, title, description, updated }) {
+/** @param {{ path: string, title: string, description: string, updated: string, published?: string }} page */
+export function article({ path, title, description, updated, published }) {
   const url = absoluteUrl(path);
   return {
     '@type': 'Article',
@@ -108,7 +109,7 @@ export function article({ path, title, description, updated }) {
     headline: title,
     description,
     image: absoluteUrl('/og-image.png'),
-    datePublished: updated,
+    datePublished: published ?? updated,
     dateModified: updated,
     inLanguage: 'en-US',
     author: { '@id': ORG_ID },

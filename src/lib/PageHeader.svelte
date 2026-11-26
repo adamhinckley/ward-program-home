@@ -7,7 +7,7 @@
   <div class="mx-auto max-w-3xl">
     <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted">
       <ol class="m-0 flex list-none flex-wrap items-center gap-2 p-0">
-        <li><a href="/" class="text-muted underline decoration-line underline-offset-2 hover:text-link">Home</a></li>
+        <li><a href="/" class="text-muted underline decoration-faint underline-offset-2 hover:text-link">Home</a></li>
         <li aria-hidden="true">/</li>
         <li aria-current="page" class="text-ink-soft">{crumb}</li>
       </ol>

@@ -22,7 +22,8 @@
 
   <!-- ── Navigation ── -->
   <header class="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-md">
-    <nav aria-label="Main" class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
+    <nav aria-label="Main">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
       <a href="/" class="flex items-center gap-2.5 no-underline">
         <img src="/logo.svg" alt="" width="28" height="28" class="block h-7 w-7" />
         <span class="text-lg font-semibold tracking-tight text-ink">{BRAND}</span>
@@ -40,14 +41,15 @@
           ctaLocation="nav"
         />
       </div>
-    </nav>
+    </div>
     <!-- Phones: the same links in a second row, so every page is reachable without a menu script. -->
-    <ul class="m-0 flex list-none justify-center gap-x-6 border-t border-line-soft px-4 py-2 text-sm md:hidden">
+    <ul class="m-0 flex list-none justify-center gap-x-6 border-t border-line-soft px-4 text-sm md:hidden">
       {#each NAV_LINKS as navLink (navLink.href)}
-        <li><a href={navLink.href} class="font-medium text-muted no-underline hover:text-ink">{navLink.label}</a></li>
+        <li><a href={navLink.href} class="inline-block py-2.5 font-medium text-muted no-underline hover:text-ink">{navLink.label}</a></li>
       {/each}
-      <li><a href={LINKS.programDemo} data-cta="view_program_demo" data-cta-location="nav_mobile" class="font-medium text-muted no-underline hover:text-ink">Demo</a></li>
+      <li><a href={LINKS.programDemo} data-cta="view_program_demo" data-cta-location="nav_mobile" class="inline-block py-2.5 font-medium text-muted no-underline hover:text-ink">Demo</a></li>
     </ul>
+    </nav>
   </header>
 
   <main id="main" class="flex w-full flex-col text-ink">

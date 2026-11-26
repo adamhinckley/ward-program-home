@@ -1,7 +1,7 @@
 // Generates the site's icons from one book glyph. Run with `npm run icons` and commit the output.
 // - public/logo.svg: brass line icon for the nav bar (transparent background)
 // - public/favicon.svg: navy rounded badge with a brass icon, readable in light and dark tabs
-// - public/favicon.ico (48x48), apple-touch-icon.png (180), icon-192.png, icon-512.png, logo-512.png
+// - public/favicon.ico (48x48), apple-touch-icon.png (180), icon-192.png, icon-512.png
 import sharp from 'sharp';
 import { writeFile } from 'node:fs/promises';
 
@@ -45,5 +45,4 @@ await writeFile('public/favicon.ico', pngToIco(await png(badgeSvg({ rounded: tru
 await writeFile('public/apple-touch-icon.png', await png(badgeSvg({ rounded: false }), 180));
 await writeFile('public/icon-192.png', await png(badgeSvg({ rounded: false }), 192));
 await writeFile('public/icon-512.png', await png(badgeSvg({ rounded: false }), 512));
-await writeFile('public/logo-512.png', await png(badgeSvg({ rounded: true }), 512));
 console.log('icons written to public/');

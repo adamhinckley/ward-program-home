@@ -45,7 +45,7 @@ export const KEY_FACTS = [
   "The ward's trial or subscription keeps its program online. If the subscription lapses, the program page shows as unavailable until billing is restored.",
   'Sharing: a printable QR code for the chapel plus a private link. Each program lives at an unguessable address.',
   'Privacy: programs are never listed in a public directory, and every program page tells search engines not to index it.',
-  'Editing: drag-and-drop sections for the date, callings and names, hymns (number, title, link), musical numbers, images, announcements, and ward contacts. Changes appear for members as soon as they are saved.',
+  'Editing: drag-and-drop sections for the date, callings and names, hymns (number, title, link), musical numbers, and images, so a ward can add anything its meeting needs (fast and testimony meetings, baby blessings, ward business). Announcements and ward contacts have their own tabs. Changes appear for members as soon as they are saved.',
   'Multiple editors: invite other ward leaders to help edit under the same subscription.',
   'Setup takes about 3 to 5 minutes.',
   `Made by ${CREATOR.name} (${CREATOR.url}). Not an official website or product of The Church of Jesus Christ of Latter-day Saints.`

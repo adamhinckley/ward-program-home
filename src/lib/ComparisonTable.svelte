@@ -13,7 +13,7 @@
       <div class="mb-4 flex items-center gap-2.5">
         <p class={`m-0 text-base ${row.featured ? 'font-bold text-ink' : 'font-medium text-ink'}`}>
           {#if row.link}
-            <a href={row.link} rel="noopener nofollow" class="text-ink underline decoration-line underline-offset-2 transition-colors hover:text-link">{row.name}</a>
+            <a href={row.link} rel="noopener nofollow" class="text-ink underline decoration-faint underline-offset-2 transition-colors hover:text-link">{row.name}</a>
           {:else}
             {row.name}
           {/if}
@@ -56,7 +56,7 @@
                 <span class="whitespace-nowrap font-semibold text-ink">{row.name}</span>
                 <span class="rounded-full bg-navy-strong px-2 py-0.5 text-xs font-semibold text-white">Recommended</span>
               {:else if row.link}
-                <a href={row.link} rel="noopener nofollow" class="text-ink-soft underline decoration-line underline-offset-2 transition-colors hover:text-link">{row.name}</a>
+                <a href={row.link} rel="noopener nofollow" class="text-ink-soft underline decoration-faint underline-offset-2 transition-colors hover:text-link">{row.name}</a>
               {:else}
                 <span class="text-ink-soft">{row.name}</span>
               {/if}

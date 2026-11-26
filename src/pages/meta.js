@@ -12,6 +12,7 @@ import { PRICE } from '../content/site.js';
  *   description: string,
  *   crumb: string,
  *   updated: string,
+ *   published?: string,
  *   llmsSummary: string
  * }} PageMeta
  */
@@ -60,6 +61,7 @@ export const pages = {
     description:
       'A guide for ward clerks and executive secretaries: the order of sacrament meeting, what to include in the program, and how to share it with a QR code.',
     crumb: 'How to make a sacrament meeting program',
+    published: '2026-11-25',
     updated: '2026-11-25',
     llmsSummary: 'Order of sacrament meeting, what a program includes, privacy tips, and digital sharing.'
   },
