@@ -10,7 +10,7 @@ export function enhance() {
     if (!(target instanceof HTMLAnchorElement)) {
       return;
     }
-    trackCtaClick(target.dataset.cta ?? '', target.dataset.ctaLocation ?? '', target.href);
+    trackCtaClick(target.dataset.cta ?? '', target.dataset.ctaLocation ?? '');
   });
 
   // The page was rendered at build time, so the year can be stale until the next deploy.
