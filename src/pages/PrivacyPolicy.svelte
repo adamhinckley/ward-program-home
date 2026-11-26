@@ -64,10 +64,10 @@
 
   <h3>Technical and usage information</h3>
   <p>Our hosting and database providers automatically record technical information such as IP address, browser type, pages requested, and timestamps, which we use to operate and secure the Service.</p>
-  <p>We measure visits to the website and editor with Vercel Web Analytics, which doesn't use cookies, doesn't identify individual visitors, and doesn't track you across other websites. We don't run analytics on ward program pages.</p>
+  <p>We measure visits to the website and editor with Vercel Web Analytics, which doesn't use cookies, doesn't identify individual visitors, and doesn't track you across other websites. We also measure visits to ward program pages with Vercel Web Analytics, the same way. From those visits we keep only weekly totals for each ward, such as how many times the program was viewed and roughly how many devices viewed it, along with how many times the ward's editor was opened. We show a ward's editors their own ward's program totals.</p>
 
   <h3>People who view a program</h3>
-  <p>Members and visitors don't need an account to view a program, and we don't ask them for any information. Their visits appear only in the technical logs described above.</p>
+  <p>Members and visitors don't need an account to view a program, and we don't ask them for any information. Their visits are counted in the weekly totals described above, without identifying anyone, and appear in the technical logs.</p>
 
   <h2>3. Cookies and similar technologies</h2>
   <p>The app uses cookies only to keep editors signed in. Your browser's local storage remembers display preferences such as light or dark mode. We don't use advertising cookies or analytics cookies, so there is nothing to opt out of.</p>
@@ -78,7 +78,7 @@
     <li>To send service emails: sign-in links, password resets, invitations, billing notices, and replies to your messages. We don't send marketing email.</li>
     <li>To manage your subscription with Stripe.</li>
     <li>To keep the Service secure, prevent abuse, and fix problems.</li>
-    <li>To understand, in aggregate, how the website and editor are used so we can improve them.</li>
+    <li>To understand, in aggregate, how the website, editor, and program pages are used so we can improve them, and to show each ward's editors how often their program is viewed.</li>
     <li>To comply with law and enforce our <a href="/terms">Terms of Service</a>.</li>
   </ul>
 
@@ -98,6 +98,7 @@
     <li><strong>Editor accounts:</strong> while the account is active. When an owner removes an editor, that editor's account is deleted.</li>
     <li><strong>Ward program data:</strong> while the ward's trial or subscription is active. If a ward cancels or its subscription lapses, we keep its data for {LEGAL.inactiveRetentionMonths} months so it can be restored, then delete it. An owner can delete the ward sooner at any time.</li>
     <li><strong>Billing records:</strong> as long as needed for tax and accounting obligations. Stripe keeps its own records under its privacy policy.</li>
+    <li><strong>Weekly usage totals:</strong> as long as the ward's program data, and deleted with it.</li>
     <li><strong>Messages you send us:</strong> up to {LEGAL.supportRetentionMonths} months.</li>
     <li><strong>Backups:</strong> deleted data can remain in encrypted backups for up to {LEGAL.backupDays} days before it is overwritten.</li>
   </ul>
