@@ -1,8 +1,5 @@
 import './app.css';
 import { enhance } from './lib/enhance.js';
-import { startAnalytics } from './lib/analytics.js';
-
-startAnalytics();
 
 const target = document.getElementById('app');
 
