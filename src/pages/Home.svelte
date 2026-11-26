@@ -18,7 +18,8 @@
     'Hymns with numbers, titles, and links, plus musical numbers with performers',
     'Ward announcements',
     'Ward contacts for the bishopric, clerks, and organization leaders',
-    'Drag-and-drop sections you can rearrange for fast Sundays and special meetings',
+    'Fast and testimony meetings, baby blessings, ward business, or anything else your meeting needs',
+    'Drag-and-drop sections you can add and rearrange each week',
     'Invite other ward leaders to help edit'
   ];
 </script>
