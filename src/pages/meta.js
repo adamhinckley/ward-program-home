@@ -65,6 +65,24 @@ export const pages = {
     updated: '2026-11-25',
     llmsSummary: 'Order of sacrament meeting, what a program includes, privacy tips, and digital sharing.'
   },
+  privacyPolicy: {
+    path: '/privacy-policy',
+    title: 'Privacy Policy — Ward Program',
+    description:
+      'What information Ward Program collects, how it is used and shared, how long it is kept, and how to access or delete it.',
+    crumb: 'Privacy Policy',
+    updated: '2026-11-26',
+    llmsSummary: 'Privacy Policy: data collected, service providers, retention, cookieless analytics, and privacy rights.'
+  },
+  terms: {
+    path: '/terms',
+    title: 'Terms of Service — Ward Program',
+    description:
+      'The terms for using Ward Program: accounts, the free trial, monthly billing and cancellation, your content, acceptable use, and liability.',
+    crumb: 'Terms of Service',
+    updated: '2026-11-26',
+    llmsSummary: 'Terms of Service: accounts, trial, billing, cancellation and refunds, content, acceptable use.'
+  },
   notFound: {
     path: '/404',
     title: 'Page not found — Ward Program',
@@ -76,4 +94,4 @@ export const pages = {
 };
 
 /** Pages that belong in the sitemap and llms.txt, in display order. */
-export const indexablePages = [pages.home, pages.pricing, pages.privacy, pages.alternatives, pages.guide];
+export const indexablePages = [pages.home, pages.pricing, pages.privacy, pages.alternatives, pages.guide, pages.privacyPolicy, pages.terms];

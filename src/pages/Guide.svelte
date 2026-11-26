@@ -26,7 +26,7 @@
   updated={meta.updated}
 />
 
-<article class="article mx-auto w-full max-w-3xl px-4 py-12 md:px-8 md:py-16">
+<article class="article mx-auto box-content max-w-3xl px-4 py-12 md:px-8 md:py-16">
   <h2 class="mt-0!">The usual order of sacrament meeting</h2>
   <p>The bishopric plans sacrament meeting and decides its details. Most wards follow this order, which reflects the guidance in <a href={HANDBOOK_URL} rel="noopener">chapter 29 of the General Handbook</a>. Always defer to your bishopric and the current handbook.</p>
   <ol>
@@ -65,7 +65,7 @@
 
 </article>
 
-<section aria-labelledby="guide-faq-heading" class="mx-auto w-full max-w-3xl px-4 pb-16 md:px-8">
+<section aria-labelledby="guide-faq-heading" class="mx-auto box-content max-w-3xl px-4 pb-16 md:px-8">
   <h2 id="guide-faq-heading" class="mt-0 mb-6 text-2xl font-bold tracking-tight text-ink md:text-3xl">Frequently asked questions</h2>
   <Faq items={guideFaq} />
 </section>

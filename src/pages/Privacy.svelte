@@ -23,7 +23,7 @@
   updated={meta.updated}
 />
 
-<article class="article mx-auto w-full max-w-3xl px-4 py-12 md:px-8 md:py-16">
+<article class="article mx-auto box-content max-w-3xl px-4 py-12 md:px-8 md:py-16">
   <h2 class="mt-0!">The short version</h2>
   <ul>
     {#each PRIVACY_POINTS.slice(0, 5) as [lead, detail] (lead)}

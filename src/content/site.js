@@ -13,6 +13,21 @@ export const CREATOR = {
   schemaId: 'https://pullclear.com/#organization'
 };
 
+// Facts the Privacy Policy and Terms rely on. Changing any of these changes a legal promise:
+// update LEGAL.effective and the pages' `updated` date (and email editors if the change is material).
+export const LEGAL = {
+  entity: 'Pull Clear Software, LLC',
+  state: 'Alabama',
+  email: 'hello@pullclear.com',
+  effective: '2026-11-26',
+  minAge: 18,
+  inactiveRetentionMonths: 12,
+  supportRetentionMonths: 24,
+  backupDays: 30,
+  responseDays: 30,
+  priceNoticeDays: 30
+};
+
 export const PRICE = {
   amount: '2.99',
   currency: 'USD',
@@ -74,5 +89,7 @@ export const FOOTER_LINKS = [
   { href: '/ward-bulletin-alternatives', label: 'WardBullet and Ward Bulletin App alternatives' },
   { href: '/how-to-make-a-sacrament-meeting-program', label: 'How to make a sacrament meeting program' },
   { href: LINKS.programDemo, label: 'Program demo' },
-  { href: LINKS.editorDemo, label: 'Editor demo' }
+  { href: LINKS.editorDemo, label: 'Editor demo' },
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms of Service' }
 ];

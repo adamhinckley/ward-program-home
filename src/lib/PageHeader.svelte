@@ -1,6 +1,6 @@
 <script>
-  /** @type {{ title: string, intro: string, crumb: string, updated?: string }} */
-  let { title, intro, crumb, updated } = $props();
+  /** @type {{ title: string, intro: string, crumb: string, updated?: string, dateLabel?: string }} */
+  let { title, intro, crumb, updated, dateLabel = 'Last updated' } = $props();
 </script>
 
 <section class="border-b border-line px-4 pb-12 pt-10 md:px-8 md:pb-16 md:pt-14">
@@ -15,7 +15,7 @@
     <h1 class="mb-5 text-3xl font-bold leading-tight tracking-tight text-ink md:text-5xl">{title}</h1>
     <p class="m-0 text-lg leading-relaxed text-muted md:text-xl">{intro}</p>
     {#if updated}
-      <p class="mt-4 mb-0 text-sm text-muted">Last updated <time datetime={updated}>{new Date(`${updated}T12:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></p>
+      <p class="mt-4 mb-0 text-sm text-muted">{dateLabel} <time datetime={updated}>{new Date(`${updated}T12:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></p>
     {/if}
   </div>
 </section>

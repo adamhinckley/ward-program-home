@@ -3,6 +3,8 @@ import Pricing from './pages/Pricing.svelte';
 import Privacy from './pages/Privacy.svelte';
 import Alternatives from './pages/Alternatives.svelte';
 import Guide from './pages/Guide.svelte';
+import PrivacyPolicy from './pages/PrivacyPolicy.svelte';
+import Terms from './pages/Terms.svelte';
 import NotFound from './pages/NotFound.svelte';
 import { pages } from './pages/meta.js';
 
@@ -16,6 +18,8 @@ export const routes = [
   { meta: pages.privacy, component: Privacy, file: 'private-ward-program.html' },
   { meta: pages.alternatives, component: Alternatives, file: 'ward-bulletin-alternatives.html' },
   { meta: pages.guide, component: Guide, file: 'how-to-make-a-sacrament-meeting-program.html' },
+  { meta: pages.privacyPolicy, component: PrivacyPolicy, file: 'privacy-policy.html' },
+  { meta: pages.terms, component: Terms, file: 'terms.html' },
   { meta: pages.notFound, component: NotFound, file: '404.html' }
 ];
 

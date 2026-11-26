@@ -32,7 +32,7 @@
   </div>
 </section>
 
-<article class="article mx-auto w-full max-w-3xl px-4 pb-16 md:px-8">
+<article class="article mx-auto box-content max-w-3xl px-4 pb-16 md:px-8">
   <h2 class="mt-0!">WardBullet</h2>
   <p><a href="https://www.wardbullet.com/" rel="noopener nofollow">WardBullet</a> is a free tool for digital sacrament meeting programs. Members view programs in any browser without an app or login, and you can share by email, Facebook, or QR code. It has templates for common meetings and lets you make changes during the meeting.</p>
   <p>The trade-off is visibility: WardBullet has a public "Find Ward" search, so anyone can look up a ward and open its program. WardBullet does let you limit ward business (such as sustainings) to users you approve.</p>
