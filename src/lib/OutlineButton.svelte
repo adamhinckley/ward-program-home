@@ -1,11 +1,23 @@
 <script>
+  /**
+   * @type {{
+   *   href: string,
+   *   rel?: string,
+   *   text: string,
+   *   variant?: 'primary' | 'light' | 'outline' | 'outline-white' | 'ghost',
+   *   size?: 'sm' | 'md' | 'lg',
+   *   cta?: string,
+   *   ctaLocation?: string
+   * }}
+   */
   let {
     href,
     rel = undefined,
     text,
     variant = 'outline',
     size = 'md',
-    onClick = undefined
+    cta = undefined,
+    ctaLocation = undefined
   } = $props();
 
   const base = 'inline-flex items-center justify-center cursor-pointer font-medium no-underline transition-all duration-200 ease-in-out';
@@ -17,10 +29,12 @@
   };
 
   const variants = {
-    primary: 'bg-teal-600 text-white border-2 border-teal-600 shadow-sm hover:bg-teal-700 hover:border-teal-700 hover:shadow-md',
-    outline: 'bg-white text-blue-900 border-2 border-blue-200 hover:border-blue-900 hover:bg-blue-50',
-    'outline-white': 'bg-transparent text-white border-2 border-white/30 hover:bg-white/10 hover:border-white/60',
-    ghost: 'bg-transparent text-blue-900 border-2 border-transparent hover:bg-blue-50'
+    primary: 'bg-navy-strong text-white border-2 border-navy-strong shadow-sm hover:bg-navy hover:border-navy hover:shadow-md',
+    // Primary action on a navy panel.
+    light: 'bg-white text-navy border-2 border-white shadow-sm hover:bg-nav-fg hover:border-nav-fg focus-visible:outline-white',
+    outline: 'bg-white text-ink border-2 border-faint hover:border-navy-strong hover:bg-accent',
+    'outline-white': 'bg-transparent text-white border-2 border-white/50 hover:bg-white/10 hover:border-white/80 focus-visible:outline-white',
+    ghost: 'bg-transparent text-ink border-2 border-transparent hover:bg-accent'
   };
 
   const sizeClass = $derived(sizes[size] ?? sizes['md']);
@@ -30,7 +44,8 @@
 <a
   {href}
   {rel}
-  onclick={onClick ?? undefined}
+  data-cta={cta}
+  data-cta-location={ctaLocation}
   class="{base} {sizeClass} {variantClass}"
 >
   {text}
