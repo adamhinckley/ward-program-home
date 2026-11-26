@@ -536,7 +536,7 @@
 
     <!-- ── Footer ── -->
     <footer class="border-t border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-      <p class="m-0">Ward Program. All rights reserved. &copy; {new Date().getFullYear()}</p>
+      <p class="m-0">Ward Program. All rights reserved. <a href="https://pullclear.com" target="_blank" rel="noopener noreferrer" aria-label="© {new Date().getFullYear()} Pull Clear Software (opens in a new tab)" class="text-slate-500 underline decoration-slate-300 underline-offset-2 transition-colors hover:text-blue-900">&copy; {new Date().getFullYear()} Pull Clear Software</a></p>
       <p class="m-0 mt-1">Not an official website of <span class="italic">The Church of Jesus Christ of Latter-day Saints</span>.</p>
     </footer>
   </main>
