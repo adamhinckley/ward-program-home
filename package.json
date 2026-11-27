@@ -21,6 +21,7 @@
     "sharp": "^0.34.5"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.6.1"
+    "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^2.1.1"
   }
 }
