@@ -1,12 +1,19 @@
 <script>
+  import { onMount } from 'svelte';
   import OutlineButton from './OutlineButton.svelte';
   import { BRAND, CREATOR, FOOTER_LINKS, LINKS, NAV_LINKS, PRICE } from '../content/site.js';
+  import { injectSpeedInsights } from '@vercel/speed-insights';
 
   /** @type {{ children: import('svelte').Snippet }} */
   let { children } = $props();
 
   // Rendered at build time; enhance() refreshes [data-current-year] in the browser.
   const year = new Date().getFullYear();
+
+  // Initialize Speed Insights
+  onMount(() => {
+    injectSpeedInsights({ framework: 'svelte' });
+  });
 </script>
 
 <div class="min-h-screen bg-white">
