@@ -44,7 +44,7 @@
   <h2>1. Who we are</h2>
   <p>{BRAND} is operated by {LEGAL.entity}, an {LEGAL.state} limited liability company ("we", "us"). This policy covers the website at www.wardprogram.com and the app at app.wardprogram.com (together, the "Service"). {BRAND} is not affiliated with or endorsed by The Church of Jesus Christ of Latter-day Saints.</p>
   <p>Questions or requests about this policy: <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>.</p>
-  <p>Ward leaders decide what goes into their ward's program. For that program content, we act on the ward's behalf and process it only to provide the Service. For editor accounts, billing, and support, we decide how information is used, as described below.</p>
+  <p>Ward leaders decide what goes into their ward's program. For that program content, we act on the ward's behalf and process it only to provide the Service. For editor accounts, billing, support, and usage measurement, we decide how information is used, as described below.</p>
 
   <h2>2. Information we collect</h2>
   <h3>Editor accounts</h3>
@@ -64,10 +64,10 @@
 
   <h3>Technical and usage information</h3>
   <p>Our hosting and database providers automatically record technical information such as IP address, browser type, pages requested, and timestamps, which we use to operate and secure the Service.</p>
-  <p>We measure visits to the website and editor with Vercel Web Analytics, which doesn't use cookies, doesn't identify individual visitors, and doesn't track you across other websites. We don't run analytics on ward program pages.</p>
+  <p>We measure visits to the website, the editor, and ward program pages with Vercel Web Analytics, which doesn't use cookies, doesn't identify individual visitors, and doesn't track you across other websites. In our database we keep only weekly totals for each ward: how many times its program was viewed, roughly how many devices viewed it, and how many times its editor was opened. We show a ward's editors their own ward's program totals.</p>
 
   <h3>People who view a program</h3>
-  <p>Members and visitors don't need an account to view a program, and we don't ask them for any information. Their visits appear only in the technical logs described above.</p>
+  <p>Members and visitors don't need an account to view a program, and we don't ask them for any information. Their visits are counted in the weekly totals described above, without identifying anyone, and appear in the technical logs.</p>
 
   <h2>3. Cookies and similar technologies</h2>
   <p>The app uses cookies only to keep editors signed in. Your browser's local storage remembers display preferences such as light or dark mode. We don't use advertising cookies or analytics cookies, so there is nothing to opt out of.</p>
@@ -78,7 +78,7 @@
     <li>To send service emails: sign-in links, password resets, invitations, billing notices, and replies to your messages. We don't send marketing email.</li>
     <li>To manage your subscription with Stripe.</li>
     <li>To keep the Service secure, prevent abuse, and fix problems.</li>
-    <li>To understand, in aggregate, how the website and editor are used so we can improve them.</li>
+    <li>To understand, in aggregate, how the website, editor, and program pages are used so we can improve them, and to show each ward's editors how often their program is viewed.</li>
     <li>To comply with law and enforce our <a href="/terms">Terms of Service</a>.</li>
   </ul>
 
@@ -98,6 +98,7 @@
     <li><strong>Editor accounts:</strong> while the account is active. When an owner removes an editor, that editor's account is deleted.</li>
     <li><strong>Ward program data:</strong> while the ward's trial or subscription is active. If a ward cancels or its subscription lapses, we keep its data for {LEGAL.inactiveRetentionMonths} months so it can be restored, then delete it. An owner can delete the ward sooner at any time.</li>
     <li><strong>Billing records:</strong> as long as needed for tax and accounting obligations. Stripe keeps its own records under its privacy policy.</li>
+    <li><strong>Weekly usage totals:</strong> as long as the ward's program data, and deleted with it. Vercel keeps its own aggregate analytics data for a limited time under its retention policy.</li>
     <li><strong>Messages you send us:</strong> up to {LEGAL.supportRetentionMonths} months.</li>
     <li><strong>Backups:</strong> deleted data can remain in encrypted backups for up to {LEGAL.backupDays} days before it is overwritten.</li>
   </ul>
@@ -106,7 +107,7 @@
   <p>You can ask to access, correct, export, or delete your personal information. Much of this you can do yourself: editors can change program content at any time, a ward's owner can remove editors, and an owner who is the ward's only remaining editor can delete the ward and its data. For anything else, email <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>. We'll respond within {LEGAL.responseDays} days and may need to confirm your identity first.</p>
   <p>If you're named in a ward's program but aren't an editor, please ask your ward's leaders to change it first. If that doesn't resolve it, contact us and we'll help.</p>
   <p><strong>United States:</strong> depending on your state, you may have the right to know what personal information we hold about you, to correct or delete it, and to not be treated differently for using these rights. We don't sell or share personal information as those laws define it.</p>
-  <p><strong>European Economic Area, United Kingdom, and Switzerland:</strong> we process account and billing information to perform our contract with you, technical and security information under our legitimate interest in running a safe service, and records we must keep under legal obligations. You also have the right to object to or restrict processing, to data portability, and to complain to your local data protection authority. Our service providers store data primarily in the United States, and transfers rely on safeguards such as the European Commission's Standard Contractual Clauses.</p>
+  <p><strong>European Economic Area, United Kingdom, and Switzerland:</strong> we process account and billing information to perform our contract with you; technical, security, and aggregate usage information under our legitimate interest in running, securing, and improving the Service and showing wards how often their programs are viewed; and records we must keep under legal obligations. You also have the right to object to or restrict processing, to data portability, and to complain to your local data protection authority. Our service providers store data primarily in the United States, and transfers rely on safeguards such as the European Commission's Standard Contractual Clauses.</p>
 
   <h2>9. Security</h2>
   <p>We encrypt all traffic with HTTPS, restrict database access so each ward's editors can reach only their own ward, store passwords and invitation codes in hashed form, and limit administrative access. No system is perfectly secure, but we work to protect your information and will notify affected users of a breach as required by law.</p>
