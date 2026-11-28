@@ -64,7 +64,7 @@
 
   <h3>Technical and usage information</h3>
   <p>Our hosting and database providers automatically record technical information such as IP address, browser type, pages requested, and timestamps, which we use to operate and secure the Service.</p>
-  <p>We measure visits to the website, the editor, and ward program pages with Vercel Web Analytics, which doesn't use cookies, doesn't identify individual visitors, and doesn't track you across other websites. In our database we keep only weekly totals for each ward: how many times its program was viewed, roughly how many devices viewed it, and how many times its editor was opened. We show a ward's editors their own ward's program totals.</p>
+  <p>We measure visits to the website, the editor, and ward program pages with Vercel Web Analytics, which doesn't use cookies, doesn't identify individual visitors, and doesn't track you across other websites. In our database we keep only weekly totals for each ward: how many times its program was viewed, roughly how many devices viewed it, and how many times its editor was opened.</p>
 
   <h3>People who view a program</h3>
   <p>Members and visitors don't need an account to view a program, and we don't ask them for any information. Their visits are counted in the weekly totals described above, without identifying anyone, and appear in the technical logs.</p>
@@ -78,7 +78,7 @@
     <li>To send service emails: sign-in links, password resets, invitations, billing notices, and replies to your messages. We don't send marketing email.</li>
     <li>To manage your subscription with Stripe.</li>
     <li>To keep the Service secure, prevent abuse, and fix problems.</li>
-    <li>To understand, in aggregate, how the website, editor, and program pages are used so we can improve them, and to show each ward's editors how often their program is viewed.</li>
+    <li>To understand, in aggregate, how the website, editor, and program pages are used so we can improve them.</li>
     <li>To comply with law and enforce our <a href="/terms">Terms of Service</a>.</li>
   </ul>
 
